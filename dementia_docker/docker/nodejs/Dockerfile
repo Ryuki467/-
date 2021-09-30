@@ -1,0 +1,5 @@
+FROM node:12.18.3-slim
+
+WORKDIR /app
+
+EXPOSE 3000

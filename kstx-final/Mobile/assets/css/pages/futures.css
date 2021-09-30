@@ -1,0 +1,140 @@
+/* All Partial Files */
+@import "../partials/_variables.css";
+@import "../partials/_globalStyles.css";
+
+/* All Component Files */
+@import "../components/bottomtab.css";
+
+body {
+    min-height: 100vh;
+    background: linear-gradient(90deg, #7000FF, #267DFF);
+}
+
+/* Futures */
+.futures {
+    width: 100%;
+    overflow-x: hidden;
+    margin-bottom: 80px;
+    position: relative;
+}
+
+.futures .radial-1 {
+    position: absolute;
+    top: 1%;
+    left: 0px;
+    z-index: -1;
+    width: 80%;
+    opacity: 0.9;
+}
+
+.futures .futures-container {
+    width: 100%;
+    padding: var(--layout-y-spacing) var(--layout-x-spacing);
+}
+
+.futures .futures-container .futures-top {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+}
+
+.futures .futures-container .futures-top .back-btn {
+    display: flex;
+    align-items: center;
+}
+
+.futures .futures-container .futures-top .back-btn svg {
+    margin-right: 10px;
+}
+
+.futures .futures-container .futures-top .back-btn p {
+    color: #fff;
+}
+
+.futures .futures-container h2 {
+    text-align: center;
+    color: #fff;
+    margin-bottom: 20px;
+}
+
+.futures .futures-container .box {
+    margin-bottom: 50px;
+}
+
+.futures .futures-container .box:last-child {
+    margin-bottom: 0px;
+}
+
+.futures .futures-container .box-1 {
+    width: 100%;
+}
+
+.futures .futures-container .box-1 img {
+    width: 100%;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+    -webkit-transform: translateX(-50%);
+    -moz-transform: translateX(-50%);
+    -ms-transform: translateX(-50%);
+    -o-transform: translateX(-50%);
+    margin-bottom: 10px;
+}
+
+.futures .futures-container .box-1 .box-infos p {
+    color: #fff;
+}
+
+.futures .futures-container .box-1 .box-infos .list p {
+    display: flex;
+    margin-bottom: 5px;
+}
+
+.futures .futures-container .box-1 .box-infos .list p:last-child {
+    margin-bottom: 0px;
+}
+
+.futures .futures-container .box-1 .box-infos .list p span {
+    display: block;
+    min-width: 5px;
+    max-width: 5px;
+    height: 5px;
+    background: #fff;
+    border-radius: 50%;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    -ms-border-radius: 50%;
+    -o-border-radius: 50%;
+    margin-right: 10px;
+}
+
+.futures .futures-container .box-2 img {
+    width: 100%;
+    margin-bottom: 25px;
+}
+
+.futures .futures-container .box-2 .box-infos p {
+    color: #fff;
+}
+
+.futures .futures-container .box-3 img {
+    width: 170%;
+    position: relative;
+    left: -46%;
+    margin-bottom: 25px;
+}
+
+.futures .futures-container .box-3 .box-infos p {
+    color: #fff;
+}
+
+.futures .futures-container .box-4 img {
+    width: 100%;
+    margin-bottom: 25px;
+}
+
+.futures .futures-container .box-4 .box-infos p {
+    color: #fff;
+}

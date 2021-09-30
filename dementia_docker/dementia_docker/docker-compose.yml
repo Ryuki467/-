@@ -1,0 +1,40 @@
+version: '3'
+
+services:
+  app:
+    ports:
+      - "8080:80"
+    build: ./docker/app
+    container_name: dementia_app
+    volumes:
+      - ./src:/var/www/html
+
+  db:
+    image: mysql:5.7
+    container_name: db
+    restart: always
+    build: ./docker/db
+    environment:
+      MYSQL_DATABASE: dementia_db
+      MYSQL_USER: admin
+      MYSQL_PASSWORD: f4BRFmkh
+      MYSQL_ROOT_PASSWORD: rootroot
+    command: --innodb-use-native-aio=0
+    volumes:
+      - ./docker/db/data:/var/lib/mysql
+    ports:
+      - 3307:3306
+  nodejs:
+    container_name: nodejs
+    build: ./docker/nodejs
+    ports:
+      - "3000:3000"
+      # for debug
+      - "9229:9229"
+    depends_on:
+      - db
+    volumes:
+      - ./sto_api:/app
+    tty: true
+    # command: "npm run start"
+    #command: "npm run debug"

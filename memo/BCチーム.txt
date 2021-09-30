@@ -1,0 +1,31 @@
+認知症アプリ
+gitがある
+ドッカー環境づくり
+
+DB設計書
+
+php bin/cake.php bake
+
+mysql -u admin -p
+password
+
+講習一覧機能
+受講者（ログインしているユーザー）の進捗に沿って
+次の講習を表示
+過去の講習については済み、みたいにする
+
+10コンテンツごとにページを移動
+
+$connection = ConnectionManager::get('default');
+        $results = $connection->execute('
+        SELECT 
+            l.id,l.member_id,l.title,l.message,l.movie_url,
+            CASE lh.status WHEN 2 THEN 2 WHEN 1 THEN 1 ELSE 0 END
+        FROM lectures AS l 
+        LEFT JOIN(
+            SELECT 
+                member_id,lecture_id,status 
+            FROM lectures_histories 
+            WHERE member_id=0
+        ) AS lh 
+        ON l.id = lh.lecture_id;')->fetchAll('assoc');

@@ -1,0 +1,111 @@
+/* All Partial Files */
+@import "../partials/_variables.css";
+@import "../partials/_globalStyles.css";
+
+/* All Component Files */
+@import "../components/topbar.css";
+@import "../components/leftbar.css";
+@import "../components/rightbar.css";
+@import "../components/bottomtab.css";
+
+/* Contact Section */
+.contact {
+    width: 100%;
+    padding: var(--layout-y-spacing) 0px;
+    margin-bottom: 80px;
+}
+
+.contact .contact-top {
+    padding: 0px var(--layout-x-spacing);
+}
+
+.contact .contact-top h2 {
+    text-align: center;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #F5FAFF;
+    margin-bottom: 20px;
+}
+
+.contact .contact-top .contact-details .contact-detail {
+    width: 100%;
+    display: flex;
+    margin-bottom: 20px;
+}
+
+.contact .contact-top .contact-details .contact-detail svg {
+    margin-right: 10px;
+}
+
+.contact .contact-top .contact-details .contact-detail p a {
+    font-family: 'Primary Bold';
+    color: var(--solid-blue-primary-color);
+}
+
+.contact .map {
+    width: 100%;
+}
+
+.contact .social-links {
+    margin-top: -5px;
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    position: relative;
+}
+
+.contact .social-links .ellipse-11 {
+    position: absolute;
+    top: -60px;
+    left: 50%;
+    height: 100px;
+    transform: translateX(-50%);
+    z-index: -1;
+}
+
+.contact .social-links a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    padding: 20px 0px;
+    background: linear-gradient(120deg, rgba(255, 255, 255, 0.6), rgba(238, 237, 237, 70%), rgba(255, 255, 255, 0.2));
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+}
+
+.contact .contact-bottom {
+    margin-top: 20px;
+    padding: 0px var(--layout-x-spacing);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.contact a.button {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding: 0px var(--layout-x-spacing);
+    height: 60px;
+    background: var(--solid-blue-primary-color);
+    box-shadow: 0px 20px 50px rgba(54, 114, 233, 40%);
+    font-size: 14px;
+    color: #fff;
+    border-radius: 15px;
+    -webkit-border-radius: 15px;
+    -moz-border-radius: 15px;
+    -ms-border-radius: 15px;
+    -o-border-radius: 15px;
+    transition: all 0.3s ease;
+}
+
+.contact a.button:hover {
+    opacity: 0.8;
+}
+
+@media only screen and (max-width: 350px) {
+    .contact a.button {
+        font-size: 12px;
+    }
+}

@@ -1,0 +1,237 @@
+/* All Partial Files */
+@import "../partials/_variables.css";
+@import "../partials/_globalStyles.css";
+
+/* All Component Files */
+@import "../components/bottomtab.css";
+
+/* Search */
+.search-result {
+    width: 100%;
+    padding: var(--layout-y-spacing) 0px;
+    margin-bottom: 80px;
+}
+
+.search-result .search-result-top {
+    padding: 0px var(--layout-x-spacing);
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+}
+
+.search-result .search-result-top .back-btn {
+    display: flex;
+    align-items: center;
+}
+
+.search-result .search-result-top .back-btn svg {
+    margin-right: 10px;
+}
+
+.search-result .search-result-top .back-btn p {
+    color: var(--solid-blue-primary-color);
+}
+
+.search-result .search-form {
+    width: 100%;
+    padding: 0px var(--layout-x-spacing) 20px var(--layout-x-spacing);
+}
+
+.search-result .search-form .input-group {
+    width: 100%;
+    height: 50px;
+    background: #fff;
+    border: 2px solid #D8E4FA;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 15px;
+    -webkit-border-radius: 15px;
+    -moz-border-radius: 15px;
+    -ms-border-radius: 15px;
+    -o-border-radius: 15px;
+}
+
+.search-result .search-form .input-group .search-icon {
+    width: 50px;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.search-result .search-form .input-group input {
+    flex: 1;
+    height: 100%;
+    font-family: 'Primary Bold';
+}
+
+.search-result .search-form .input-group input::placeholder {
+    font-family: 'Primary Regular';
+}
+
+.search-result .search-form .input-group .clear-icon {
+    width: 50px;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.search-result .search-query {
+    margin: 0px var(--layout-x-spacing);
+    margin-bottom: 20px;
+}
+
+.search-result .search-query span {
+    font-family: 'Primary Thin';
+    font-size: 13px;
+    color: #C5C0DB;
+}
+
+.search-result .packages-container {
+    padding: 0px var(--layout-x-spacing);
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 10px;
+}
+
+@media only screen and (max-width: 350px) {
+    .search-result .packages-container {
+        grid-template-columns: 1fr;
+    }
+}
+
+.search-result .packages-container .package {
+    width: 100%;
+}
+
+.search-result .packages-container .package .package-image {
+    width: 100%;
+    height: 150px;
+    overflow: hidden;
+    border-radius: 25px 25px 0px 0px;
+    -webkit-border-radius: 25px 25px 0px 0px;
+    -moz-border-radius: 25px 25px 0px 0px;
+    -ms-border-radius: 25px 25px 0px 0px;
+    -o-border-radius: 25px 25px 0px 0px;
+}
+
+.search-result .packages-container .package .package-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.search-result .packages-container .package .package-container {
+    width: 100%;
+    padding: 15px;
+    background: linear-gradient(to right bottom, rgba(250, 254, 255, 0.5), rgba(203, 225, 250, 0.7), rgba(229, 213, 251, 0.23));
+    box-shadow: 5px 5px 20px rgba(203, 225, 250, 0.6);
+    border-right: 1px solid rgba(213, 208, 226, 0.3);
+    border-bottom: 1px solid rgba(213, 208, 226, 0.3);
+    border-left: 1px solid rgba(213, 208, 226, 0.3);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-radius: 0px 0px 25px 25px;
+    -webkit-border-radius: 0px 0px 25px 25px;
+    -moz-border-radius: 0px 0px 25px 25px;
+    -ms-border-radius: 0px 0px 25px 25px;
+    -o-border-radius: 0px 0px 25px 25px;
+}
+
+.search-result .packages-container .package .package-container h4 {
+    margin-bottom: 5px;
+}
+
+.search-result .packages-container .package .package-container .package-description {
+    color: var(--text-color);
+    margin-bottom: 15px;
+}
+
+.search-result .packages-container .package .package-container .package-info {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+
+.search-result .packages-container .package .package-container .package-info .package-info-left h4 {
+    color: var(--secondaryColor);
+    margin-bottom: 10px;
+}
+
+.search-result .packages-container .package .package-container .package-info .package-info-left  .package-info-left-bottom {
+    display: flex;
+    align-items: center;
+}
+
+.search-result .packages-container .package .package-container .package-info .package-info-left  .package-info-left-bottom svg {
+    margin-right: 5px;
+}
+
+.search-result .packages-container .package .package-container .package-info .package-info-left  .package-info-left-bottom p {
+    color: var(--title-text-color);
+    margin-right: 5px;
+}
+
+.search-result .packages-container .package .package-container .package-progress-bar {
+    width: 100%;
+    height: 4px;
+    background: #CBD5E4;
+    position: relative;
+    margin-bottom: 10px;
+    border-radius: 100px;
+    -webkit-border-radius: 100px;
+    -moz-border-radius: 100px;
+    -ms-border-radius: 100px;
+    -o-border-radius: 100px;
+}
+
+.search-result .packages-container .package .package-container .package-progress-bar .package-progress-bar-percent {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    background: linear-gradient(90deg, #0295FF, var(--solid-blue-primary-color));
+    border-radius: 100px;
+    -webkit-border-radius: 100px;
+    -moz-border-radius: 100px;
+    -ms-border-radius: 100px;
+    -o-border-radius: 100px;
+}
+
+.search-result .packages-container .package .package-container .package-bottom {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.search-result .packages-container .package .package-container .package-bottom p {
+    display: flex;
+    align-items: center;
+    color: var(--title-text-color);
+}
+
+.search-result .packages-container .package .package-container .package-bottom p svg {
+    margin-right: 5px;
+}
+
+.search-result .packages-container .package .package-container .package-bottom .package-progress-percent {
+    width: 35px;
+    height: 16px;
+    background: var(--solid-blue-secondary-color);
+    font-size: 10px;
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 100px;
+    -webkit-border-radius: 100px;
+    -moz-border-radius: 100px;
+    -ms-border-radius: 100px;
+    -o-border-radius: 100px;
+}

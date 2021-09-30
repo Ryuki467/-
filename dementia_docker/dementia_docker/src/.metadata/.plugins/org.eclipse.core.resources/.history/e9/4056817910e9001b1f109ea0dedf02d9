@@ -1,0 +1,234 @@
+<?php
+namespace App\Controller\Admin;
+
+use App\Controller\Admin\AppController;
+use Cake\Routing\Router;
+use Cake\I18n\I18n;
+use Cake\Http\Exception\BadRequestException;
+use Cake\Datasource\ConnectionManager;
+use Cake\I18n\Time;
+use Cake\Auth\DefaultPasswordHasher;
+
+/**
+ * Members Controller
+ *
+ * @property \App\Model\Table\MembersTable $Members
+ *
+ * @method \App\Model\Entity\Member[]|\Cake\Datasource\ResultSetInterface paginate($object = null, array $settings = [])
+ */
+class MembersController extends AppController
+{
+    public $helpers = [
+        'Paginator' => ['templates' => 'paginator-templates']
+    ];
+
+    public $components = ['Upload', 'Paginator'];
+
+    /**
+     * Index method
+     *
+     * @return \Cake\Http\Response|null
+     */
+    public function index()
+    {
+        $user = $this->Session->read('Auth.User');
+        $member = $this->Members->newEntity();
+
+        $data = $this->request->getQuery();
+        $list = $this->Members->findMembers($data);
+        $options = [
+            'order' => ['id' => 'DESC'],
+        ];
+        $members = $this->paginate($list, $options);
+
+        $header = [
+            'title' => __('Member'),
+            'description' => '',
+            'breadcrumbs' => [
+                'Home' => Router::url(['controller' => 'Dashboards'], true),
+                __('List {0}', __('Member')) => ''
+            ]
+        ];
+
+        $this->set($data);
+        $this->set(compact('member', 'members', 'header', 'user'));
+    }
+
+    /**
+     * Add mothod
+     *
+     * @return void
+     */
+    public function add()
+    {   
+        $user = $this->Session->read('Auth.User');
+        $member = $this->Members->newEntity();
+        var_dump($member);
+        if ($this->request->is('post')) {
+            $member = $this->Members->patchEntity($member, $this->request->getData());
+            $member->set('member_code', $this->createMemberCode($member->email));
+            if ($this->Members->save($member)) {
+                $this->Flash->success(__('The {0} has been saved.', __('Member')));
+                return $this->redirect(['action' => 'index']);
+            } else {
+                $this->Flash->error(__('The {0} could not be saved. Please, try again.', __('Member')));
+            }
+        }
+        $header = [
+            'title' => __('Member'),
+            'description' => '',
+            'breadcrumbs' => [
+                'Home' => Router::url(['controller' => 'Dashboards'], true),
+                __('List {0}', __('Member')) => Router::url(['controller' => 'Members', 'action' => 'index'], true),
+                __('Regist {0}', __('Member')) => ''
+            ]
+        ];
+        $this->set(compact('user', 'member', 'header'));
+        $this->render('edit');
+    }
+
+    /**
+     * Edit method
+     *
+     * @param string|null $id Member id.
+     * @return \Cake\Http\Response|null Redirects on successful edit, renders view otherwise.
+     * @throws \Cake\Datasource\Exception\RecordNotFoundException When record not found.
+     */
+    public function edit($id = null)
+    {
+        $member = $this->Members->get($id, [
+            'contain' => []
+        ]);
+        if ($this->request->is(['patch', 'post', 'put'])) {
+            $data = $this->request->getData();
+            if (empty($data['password'])) {
+                unset($data['password']);
+            }
+            $member = $this->Members->patchEntity($member, $data);
+            if ($this->Members->save($member)) {
+                $this->Flash->success(__('The {0} has been saved.', __('Member')));
+                return $this->redirect(['action' => 'index']);
+            }
+            $this->Flash->error(__('The {0} could not be saved. Please, try again.', __('Member') ));
+        }
+
+        $header = [
+            'title' => __('Member'),
+            'description' => '',
+            'breadcrumbs' => [
+                'Home' => Router::url(['controller' => 'Dashboards'], true),
+                __('List {0}', __('Member')) => Router::url(['controller' => 'Members', 'action' => 'index'], true),
+                __('Edit {0}', __('Member')) => '',
+            ]
+        ];
+        $this->set(compact('member', 'header'));
+    }
+
+    /**
+     * Delete method
+     *
+     * @param string|null $id Member id.
+     * @return \Cake\Http\Response|null Redirects to index.
+     * @throws \Cake\Datasource\Exception\RecordNotFoundException When record not found.
+     */
+    public function delete($id = null)
+    {
+        $this->request->allowMethod(['post', 'delete']);
+        $member = $this->Members->get($id);
+
+        $conn = ConnectionManager::get('default');
+        $conn->begin();
+
+        if ($this->Members->delete($member)) {
+            $conn->commit();
+            $this->Flash->success(__('The {0} has been deleted.', __('Member')));
+        } else {
+            $conn->rollback();
+            $this->Flash->error(__('The {0} could not be deleted. Please, try again.', __('Member')));
+        }
+
+        return $this->redirect(['action' => 'index']);
+    }
+
+    /**
+     * approval method
+     *
+     * @param string|null $id Member id.
+     * @return \Cake\Http\Response|null Redirects on successful edit, renders view otherwise.
+     * @throws \Cake\Datasource\Exception\RecordNotFoundException When record not found.
+     */
+    public function approval($id = null)
+    {
+        $member = $this->Members->get($id, [
+            'contain' => []
+        ]);
+        if (!empty($member)) {
+            $data['id'] = $id;
+            $member = $this->Members->patchEntity($member, $data);
+            if ($this->Members->save($member)) {
+                $this->sendRequest($member);
+                $this->Flash->success(__('The {0} has been saved.', __('Member')));
+                return $this->redirect(['action' => 'index']);
+            }
+            $this->Flash->error(__('The {0} could not be saved. Please, try again.', __('Member') ));
+        }
+
+        return $this->redirect(['action' => 'index']);
+    }
+
+    /**
+     * パスワード再設定の通知メール送信処理
+     *
+     */
+    private function sendRequest($member)
+    {
+        $lang = $member['language'];
+        $locale = $this->_getLocale($lang);
+        I18n::setLocale($locale);
+
+        $Email = new \Cake\Mailer\Email();
+        $Email
+            ->setFrom(EMAIL_FROM_ADDRESS)
+            ->setCharset('ISO-2022-JP') // 相手側のメーラで文字化けするのを回避するため
+            ->setViewVars(['member' => $member])
+            ->setTo($member->email)
+            ->setSubject(__('Member registration complete'));
+        $Email->viewBuilder()->setTemplate('approval_member');
+        $Email->getTransport()->setConfig(['additionalParameters' => '-f ' . EMAIL_FROM_ADDRESS]);
+
+        try{
+            $Email->send();
+        }catch(\Exception $e){
+            Log::error($e->getMessage());
+        }
+    }
+
+    /**
+     * Get method
+     *
+     * @param string|null $id Certificate Line id.
+     * @return \Cake\Http\Response|null Redirects to index.
+     * @throws \Cake\Datasource\Exception\RecordNotFoundException When record not found.
+     */
+    public function get($id = null)
+    {
+        if(!$this->request->is('ajax')) {
+            throw new BadRequestException();
+        }
+
+        $member = $this->Members->get($id);
+
+        $this->set(compact('member'));
+    }
+
+    /**
+     * メールアドレスとタイムスタンプからハッシュ値を生成
+     *
+     * @param [type] $email
+     * @return void
+     */
+    private function createMemberCode($email)
+    {
+        return (new DefaultPasswordHasher)->hash($email . (new Time())->toUnixString(), 'sha256');
+    }
+}

@@ -1,0 +1,431 @@
+/* All Partial Files */
+@import "../partials/_variables.css";
+@import "../partials/_global-styles.css";
+
+/* All Component Files */
+@import "../components/_navbar.css";
+@import "../components/_footer.css";
+
+/* Hero Section */
+.hero {
+    width: 100%;
+}
+
+.hero .container {
+    position: relative;
+}
+
+.hero .container .hero-top {
+    width: 100%;
+}
+
+.hero .container .hero-top .hero-top-items {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(8, 1fr);
+    grid-gap: 15px;
+}
+
+.hero .container .hero-top .hero-top-items .item {
+    width: 100%;
+    padding: 20px;
+    border-top: 2px solid rgba(255, 255, 255, 0.3);
+    border-left: 2px solid rgba(255, 255, 255, 0.3);
+    backdrop-filter: blur(25px);
+    -webkit-backdrop-filter: blur(25px);
+    border-radius: 15px;
+    -webkit-border-radius: 15px;
+    -moz-border-radius: 15px;
+    -ms-border-radius: 15px;
+    -o-border-radius: 15px;
+    user-select: none;
+    cursor: pointer;
+    transition: var(--transition);
+    -webkit-transition: var(--transition);
+    -moz-transition: var(--transition);
+    -ms-transition: var(--transition);
+    -o-transition: var(--transition);
+}
+
+.hero .container .hero-top .hero-top-items .item:hover {
+    transform: scale(1.05);
+    -webkit-transform: scale(1.05);
+    -moz-transform: scale(1.05);
+    -ms-transform: scale(1.05);
+    -o-transform: scale(1.05);
+}
+
+.hero .container .hero-top .hero-top-items .item:nth-child(1n) {
+    background: linear-gradient(to right bottom, rgba(233, 225, 249, 1), rgba(230, 205, 253, 0.8));
+    box-shadow: 0px 0px 40px rgba(230, 205, 253, 0.9);
+}
+
+.hero .container .hero-top .hero-top-items .item:nth-child(2n) {
+    background: linear-gradient(to right bottom, rgba(221, 234, 251, 1), rgba(200, 227, 253, 0.8));
+    box-shadow: 0px 0px 40px rgba(200, 227, 253, 0.9);
+}
+
+.hero .container .hero-top .hero-top-items .item:nth-child(3n) {
+    background: linear-gradient(to right bottom, rgba(211, 231, 246, 1), rgba(177, 226, 241, 0.8));
+    box-shadow: 0px 0px 40px rgba(177, 226, 241, 0.9);
+}
+
+.hero .container .hero-top .hero-top-items .item:nth-child(4n) {
+    background: linear-gradient(to right bottom, rgba(233, 213, 243, 1), rgba(244, 176, 227, 0.8));
+    box-shadow: 0px 0px 40px rgba(244, 176, 227, 0.9);
+}
+
+.hero .container .hero-top .hero-top-items .item img {
+    width: 100%;
+    height: 50px;
+    object-fit: contain;
+    margin-bottom: 10px;
+}
+
+.hero .container .hero-top .hero-top-items .item p {
+    text-align: center;
+}
+
+.hero .container .hero-bottom {
+    margin-top: 25px;
+    width: 100%;
+}
+
+/* Stories Overlay */
+.stories-overlay {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    background: linear-gradient(to right bottom, rgba(255, 255, 255, 0.2), rgba(238, 237, 237, 0.1));
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    z-index: 3000;
+    display: none;
+}
+
+.stories-overlay.active {
+    display: flex;
+}
+
+.stories-overlay .stories-overlay-close-trigger {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    cursor: pointer;
+}
+
+.stories-overlay .stories-overlay-container {
+    width: 100%;
+    height: 65vh;
+}
+
+.stories-overlay .stories-overlay-container .stories-wrapper {
+    width: 100%;
+}
+
+.stories-overlay .stories-overlay-container .stories-wrapper .story {
+    width: 100%;
+    height: 65vh;
+    background-color: #fff;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.05);
+    border-radius: 20px;
+    overflow: hidden;
+}
+
+.stories-overlay .stories-overlay-container .stories-wrapper .story img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.stories-overlay .slider-controls {
+    position: absolute;
+    bottom: 50px;
+    left: 50%;
+    transform: translateX(-50%);
+    -webkit-transform: translateX(-50%);
+    -moz-transform: translateX(-50%);
+    -ms-transform: translateX(-50%);
+    -o-transform: translateX(-50%);
+    display: flex;
+    align-items: center;
+}
+
+.stories-overlay .slider-controls button {
+    width: 55px;
+    height: 55px;
+    background: #fff;
+    box-shadow: 5px 5px 20px rgba(0, 43, 234, 0.05);
+    border-radius: 50%;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    -ms-border-radius: 50%;
+    -o-border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+.stories-overlay .slider-controls button:nth-child(1) {
+    margin-right: 20px;
+}
+
+/* Tokens Section */
+.tokens {
+    width: 100%;
+    padding: 50px 0px;
+}
+
+.tokens .container {
+    width: 90%;
+}
+
+.tokens .container h2 {
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.tokens .tokens-nav {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 40px;
+}
+
+.tokens .tokens-nav button {
+    padding: 10px 20px;
+    background: #fff;
+    box-shadow: 0px 5px 20px rgb(0, 0, 0, 0.05);
+    color: var(--solid-blue-primary-color);
+    border-radius: 100px;
+    -webkit-border-radius: 100px;
+    -moz-border-radius: 100px;
+    -ms-border-radius: 100px;
+    -o-border-radius: 100px;
+    margin-right: 20px;
+    cursor: pointer;
+    transition: var(--transition);
+    -webkit-transition: var(--transition);
+    -moz-transition: var(--transition);
+    -ms-transition: var(--transition);
+    -o-transition: var(--transition);
+}
+
+.tokens .tokens-nav button:last-child {
+    margin-right: 0px;
+}
+
+.tokens .tokens-nav button:hover {
+    background: var(--solid-blue-primary-color);
+    color: #fff;
+}
+
+.tokens .container .tokens-wrapper {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-gap: 15px;
+    display: none;
+}
+
+.tokens .container .tokens-wrapper.active {
+    display: grid;
+}
+
+.tokens .container .tokens-wrapper .token {
+    width: 100%;
+}
+
+.tokens .container .tokens-wrapper .token .token-image {
+    width: 100%;
+    height: 150px;
+    overflow: hidden;
+    border-radius: 25px 25px 0px 0px;
+    -webkit-border-radius: 25px 25px 0px 0px;
+    -moz-border-radius: 25px 25px 0px 0px;
+    -ms-border-radius: 25px 25px 0px 0px;
+    -o-border-radius: 25px 25px 0px 0px;
+}
+
+.tokens .container .tokens-wrapper .token .token-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.tokens .container .tokens-wrapper .token .token-container {
+    width: 100%;
+    padding: 15px;
+    background: linear-gradient(to right bottom, rgba(250, 254, 255, 0.5), rgba(203, 225, 250, 0.7), rgba(250, 254, 255, 0.5));
+    border-right: 1px solid rgba(213, 208, 226, 0.3);
+    border-bottom: 1px solid rgba(213, 208, 226, 0.3);
+    border-left: 1px solid rgba(213, 208, 226, 0.3);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-radius: 0px 0px 25px 25px;
+    -webkit-border-radius: 0px 0px 25px 25px;
+    -moz-border-radius: 0px 0px 25px 25px;
+    -ms-border-radius: 0px 0px 25px 25px;
+    -o-border-radius: 0px 0px 25px 25px;
+}
+
+.tokens .container .tokens-wrapper .token .token-container h4 {
+    font-size: 18px;
+    margin-bottom: 5px;
+}
+
+.tokens .container .tokens-wrapper .token .token-container .token-description {
+    color: var(--text-color);
+    margin-bottom: 15px;
+}
+
+.tokens .container .tokens-wrapper .token .token-container .token-info {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+
+.tokens .container .tokens-wrapper .token .token-container .token-info .token-info-left h4 {
+    font-size: 18px;
+    color: var(--secondaryColor);
+    margin-bottom: 10px;
+}
+
+.tokens .container .tokens-wrapper .token .token-container .token-info .token-info-left  .token-info-left-bottom {
+    display: flex;
+    align-items: center;
+}
+
+.tokens .container .tokens-wrapper .token .token-container .token-info .token-info-left  .token-info-left-bottom svg {
+    margin-right: 5px;
+}
+
+.tokens .container .tokens-wrapper .token .token-container .token-info .token-info-left  .token-info-left-bottom p {
+    color: var(--title-text-color);
+    margin-right: 5px;
+}
+
+.tokens .container .tokens-wrapper .token .token-container .token-info .token-info-right button {
+    width: 40px;
+    height: 40px;
+    background: var(--solid-blue-primary-color);
+    border-radius: 50%;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    -ms-border-radius: 50%;
+    -o-border-radius: 50%;
+    transition: var(--transition);
+    -webkit-transition: var(--transition);
+    -moz-transition: var(--transition);
+    -ms-transition: var(--transition);
+    -o-transition: var(--transition);
+    cursor: pointer;
+}
+
+.tokens .container .tokens-wrapper .token .token-container .token-info .token-info-right button:hover {
+    background: var(--solid-blue-secondary-color);
+}
+
+.tokens .container .tokens-wrapper .token .token-container .token-progress-bar {
+    width: 100%;
+    height: 4px;
+    background: #CBD5E4;
+    position: relative;
+    margin-bottom: 10px;
+    border-radius: 100px;
+    -webkit-border-radius: 100px;
+    -moz-border-radius: 100px;
+    -ms-border-radius: 100px;
+    -o-border-radius: 100px;
+}
+
+.tokens .container .tokens-wrapper .token .token-container .token-progress-bar .token-progress-bar-percent {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    background: linear-gradient(90deg, #0295FF, var(--solid-blue-primary-color));
+    border-radius: 100px;
+    -webkit-border-radius: 100px;
+    -moz-border-radius: 100px;
+    -ms-border-radius: 100px;
+    -o-border-radius: 100px;
+}
+
+.tokens .container .tokens-wrapper .token .token-container .token-bottom {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.tokens .container .tokens-wrapper .token .token-container .token-bottom p {
+    display: flex;
+    align-items: center;
+    color: var(--title-text-color);
+}
+
+.tokens .container .tokens-wrapper .token .token-container .token-bottom p svg {
+    margin-right: 5px;
+}
+
+.tokens .container .tokens-wrapper .token .token-container .token-bottom .token-progress-percent {
+    width: 35px;
+    height: 16px;
+    background: var(--solid-blue-secondary-color);
+    font-size: 10px;
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 100px;
+    -webkit-border-radius: 100px;
+    -moz-border-radius: 100px;
+    -ms-border-radius: 100px;
+    -o-border-radius: 100px;
+}
+
+/* Responsive */
+
+/* Hero Section */
+@media only screen and (max-width: 1150px) {
+    .hero .container .hero-top .hero-top-items {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+
+/* Stories Overlay */
+@media only screen and (max-width: 1050px) {
+    .stories-overlay .stories-overlay-container {
+        height: 40vh;
+    }
+    
+    .stories-overlay .stories-overlay-container .stories-wrapper .story {
+        height: 40vh;
+    }
+}
+
+@media only screen and (max-width: 1140px) {
+    .shape-2 {
+        width: 95%;
+    }
+}
+
+/* Tokens Section */
+@media only screen and (max-width: 1480px) {
+    .tokens .container .tokens-wrapper {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+
+@media only screen and (max-width: 1200px) {
+    .tokens .container .tokens-wrapper {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}

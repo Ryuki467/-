@@ -1,0 +1,50 @@
+・スクリプト挿入攻撃
+・クロスサイトスクリプティング
+・クロスサイトリクエストフォージェリ
+・SQLインジェクション
+・セッション固定攻撃
+・セッションハイジャック
+
+・HTTPヘッダインジェクション
+・メールの第三者中継
+・変数汚染攻撃
+・Nullバイト攻撃
+・ディレクトリトラバーサル
+・eval利用攻撃
+・ファイルアップロード攻撃
+・インクルード攻撃
+・パス・ディスクロージャ
+・コマンド実行攻撃(コマンド・インジェクション）
+
+<script>alert("攻撃を受けました");</script>
+
+?username=%3Cscript%3Ewindow.location.href%3D%22http%3A%2F%2Fgihyo.jp%2Fbook%22%3B%3C%2Fscript%3E
+
+create database 
+
+cd C:\xampp\htdocs
+laravel new lara8order
+cd lara8order
+composer require laravel/ui
+composer require kyslik/column-sortable
+php artisan ui bootstrap --auth
+npm install
+npm run dev
+npm run dev
+php artisan vendor:publish --provider="Kyslik\ColumnSortable\ColumnSortableServiceProvider" --tag="config"
+
+php -r "copy('https://readouble.com/laravel/8.x/ja/install-ja-lang-files.php','install-ja-lang.php');"
+php -f install-ja-lang.php
+php -r "unlink('install-ja-lang.php');"
+
+php artisan make:migration create_customers_table --create=customers
+php artisan make:migration create_products_table --create=products
+php artisan make:migration create_orders_table --create=orders
+php artisan make:migration create_order_details_table --create=order_details
+
+php artisan migrate --pretend
+php artisan migrate
+
+php artisan make:model Product
+
+php artisan make:controller OrderDetailController

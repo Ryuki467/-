@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Main Css -->
+    <link rel="stylesheet" href="./assets/css/pages/member-submit.css">
+
+    <title>Member Submit | KSTX</title>
+</head>
+
+<body>
+
+    <!-- Member Submit Section -->
+    <section class="member-submit">
+        <div class="member-submit-container">
+            <div class="member-submit-top">
+                <div class="back-btn">
+                    <svg width="8" height="14" viewBox="0 0 8 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M7 13L1 7L7 1" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                    <p class="text-regular-14">Назад</p>
+                </div>
+            </div>
+
+            <div class="member-submit-steps">
+                <div class="member-submit-step member-submit-step-1 active" rel="member-submit-step-1">
+                    <h2>Информация о вас</h2>
+
+                    <div class="form">
+                        <div class="input-group">
+                            <label class="text-regular-14">Введите ваше имя и фамилию</label>
+                            <input type="text" class="user_first_and_last_name" placeholder="Имя и Фамилия" required>
+                            <p class="msg text-regular-12 first-and-last-name-error">First and last name can't be blank</p> <!-- Just add active class to make it visible -->
+                        </div>
+
+                        <div class="account-type-input-group">
+                            <label class="text-regular-14">Тип аккаунта</label>
+
+                            <div class="account-types">
+                                <div class="account-type account-type-1 active" rel="Компания" data-index="account-type-1">
+                                    <div class="radio"></div>
+                                    <p class="text-regular-14">Компания</p>
+                                </div>
+
+                                <div class="account-type account-type-2" rel="Частный инвестор" data-index="account-type-2">
+                                    <div class="radio"></div>
+                                    <p class="text-regular-14">Частный инвестор</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="profile-picture-input-group">
+                            <label class="text-regular-14">Фото профиля</label>
+
+                            <div class="profile-picture-choosing-box">
+                                <div class="profile-picture-choosing-item">
+                                    <p class="text-regular-14">Обзор</p>
+                                </div>
+
+                                <input type="file" id="profile_picture_input" hidden>
+
+                                <div class="profile-picture-choosing-item choose-profile-picture-btn">
+                                    <svg width="17" height="16" viewBox="0 0 17 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <g clip-path="url(#clip0)">
+                                        <path d="M15.8332 12.6667C15.8332 13.0203 15.6927 13.3594 15.4426 13.6095C15.1926 13.8595 14.8535 14 14.4998 14H2.49984C2.14622 14 1.80708 13.8595 1.55703 13.6095C1.30698 13.3594 1.1665 13.0203 1.1665 12.6667V5.33333C1.1665 4.97971 1.30698 4.64057 1.55703 4.39052C1.80708 4.14048 2.14622 4 2.49984 4H5.1665L6.49984 2H10.4998L11.8332 4H14.4998C14.8535 4 15.1926 4.14048 15.4426 4.39052C15.6927 4.64057 15.8332 4.97971 15.8332 5.33333V12.6667Z" stroke="white" stroke-width="1.33" stroke-linecap="round" stroke-linejoin="round"/>
+                                        <path d="M8.50016 11.3333C9.97292 11.3333 11.1668 10.1394 11.1668 8.66667C11.1668 7.19391 9.97292 6 8.50016 6C7.0274 6 5.8335 7.19391 5.8335 8.66667C5.8335 10.1394 7.0274 11.3333 8.50016 11.3333Z" stroke="white" stroke-width="1.33" stroke-linecap="round" stroke-linejoin="round"/>
+                                        </g>
+                                        <defs>
+                                        <clipPath id="clip0">
+                                        <rect width="16" height="16" fill="white" transform="translate(0.5)"/>
+                                        </clipPath>
+                                        </defs>
+                                    </svg>                                        
+                                    <p class="text-regular-14">Камера</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="member-submit-step member-submit-step-2" rel="member-submit-step-2">
+                    <h2>Информация о вас</h2>
+
+                    <div class="form">
+                        <div class="input-group">
+                            <label class="text-regular-14">ФИО</label>
+                            <input type="text" class="2nd_step_user_first_and_last_name" placeholder="Имя и Фамилия" value="Нурислам Абдуллаев" disabled required>
+                            <p class="msg text-regular-12 first-and-last-name-error">First and last name can't be blank</p> <!-- Just add active class to make it visible -->
+                        </div>
+
+                        <div class="account-type-input-group">
+                            <label class="text-regular-14">Тип аккаунта</label>
+
+                            <div class="account-types">
+                                <div class="account-type account-type-1 active" rel="Компания" data-index="account-type-1">
+                                    <div class="radio"></div>
+                                    <p class="text-regular-14">Компания</p>
+                                </div>
+
+                                <div class="account-type account-type-2" rel="Частный инвестор" data-index="account-type-2">
+                                    <div class="radio"></div>
+                                    <p class="text-regular-14">Частный инвестор</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="profile-picture-input-group">
+                            <label class="text-regular-14">Фото профиля</label>
+
+                            <div class="profile-picture-box">
+                                <img src="./assets/images/users/user-1.svg" class="profile_picture" alt="">
+
+                                <div class="actions">
+                                    <button class="reset-profile-picture-btn">
+                                        <svg width="14" height="16" viewBox="0 0 14 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path fill-rule="evenodd" clip-rule="evenodd" d="M0.333496 3.99984C0.333496 3.63165 0.631973 3.33317 1.00016 3.33317H13.0002C13.3684 3.33317 13.6668 3.63165 13.6668 3.99984C13.6668 4.36803 13.3684 4.6665 13.0002 4.6665H1.00016C0.631973 4.6665 0.333496 4.36803 0.333496 3.99984Z" fill="white"/>
+                                            <path fill-rule="evenodd" clip-rule="evenodd" d="M5.66683 1.99984C5.49002 1.99984 5.32045 2.07007 5.19543 2.1951C5.0704 2.32012 5.00016 2.48969 5.00016 2.6665V3.33317H9.00016V2.6665C9.00016 2.48969 8.92992 2.32012 8.8049 2.1951C8.67988 2.07007 8.51031 1.99984 8.3335 1.99984H5.66683ZM10.3335 3.33317V2.6665C10.3335 2.13607 10.1228 1.62736 9.74771 1.25229C9.37264 0.877218 8.86393 0.666504 8.3335 0.666504H5.66683C5.1364 0.666504 4.62769 0.877218 4.25262 1.25229C3.87754 1.62736 3.66683 2.13607 3.66683 2.6665V3.33317H2.3335C1.96531 3.33317 1.66683 3.63165 1.66683 3.99984V13.3332C1.66683 13.8636 1.87754 14.3723 2.25262 14.7474C2.62769 15.1225 3.1364 15.3332 3.66683 15.3332H10.3335C10.8639 15.3332 11.3726 15.1225 11.7477 14.7474C12.1228 14.3723 12.3335 13.8636 12.3335 13.3332V3.99984C12.3335 3.63165 12.035 3.33317 11.6668 3.33317H10.3335ZM3.00016 4.6665V13.3332C3.00016 13.51 3.0704 13.6795 3.19543 13.8046C3.32045 13.9296 3.49002 13.9998 3.66683 13.9998H10.3335C10.5103 13.9998 10.6799 13.9296 10.8049 13.8046C10.9299 13.6795 11.0002 13.51 11.0002 13.3332V4.6665H3.00016Z" fill="white"/>
+                                        </svg>
+                                        <p class="text-regular-14">Удалить</p>
+                                    </button>
+
+                                    <button class="choose-profile-picture-btn">
+                                        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path fill-rule="evenodd" clip-rule="evenodd" d="M12.6665 2.11458C12.5064 2.11458 12.3479 2.14611 12.2 2.20737C12.0522 2.26863 11.9178 2.35842 11.8046 2.47161L2.92978 11.3464L2.28333 13.7167L4.65364 13.0703L13.5284 4.19546C13.6416 4.08227 13.7314 3.9479 13.7927 3.80001C13.8539 3.65212 13.8855 3.49361 13.8855 3.33353C13.8855 3.17346 13.8539 3.01495 13.7927 2.86706C13.7314 2.71917 13.6416 2.5848 13.5284 2.47161C13.4153 2.35842 13.2809 2.26863 13.133 2.20737C12.9851 2.14611 12.8266 2.11458 12.6665 2.11458ZM11.6898 0.975531C11.9995 0.847267 12.3313 0.78125 12.6665 0.78125C13.0017 0.78125 13.3336 0.847267 13.6432 0.975531C13.9529 1.1038 14.2343 1.2918 14.4713 1.5288C14.7083 1.7658 14.8963 2.04716 15.0245 2.35682C15.1528 2.66648 15.2188 2.99837 15.2188 3.33353C15.2188 3.6687 15.1528 4.00059 15.0245 4.31025C14.8963 4.61991 14.7083 4.90127 14.4713 5.13827L5.47126 14.1383C5.38922 14.2203 5.28719 14.2795 5.17526 14.31L1.5086 15.31C1.27779 15.373 1.03095 15.3074 0.861782 15.1383C0.692615 14.9691 0.627062 14.7223 0.69001 14.4915L1.69001 10.8248C1.72054 10.7129 1.77974 10.6108 1.86178 10.5288L10.8618 1.5288C11.0988 1.2918 11.3801 1.1038 11.6898 0.975531Z" fill="white"/>
+                                        </svg>
+                                        <p class="text-regular-14">Изменить</p>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="member-submit-step member-submit-step-3" rel="member-submit-step-3">
+                    <img src="./assets/images/users/user-1.svg" class="profile_picture" alt="">
+                    <h2 class="3rd_step_user_first_and_last_name">Нурислам Абдуллаев</h2>
+                    <p class="text-regular-14 3rd_step_account_type">Частный инвестор</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Steps Bar -->
+    <div class="steps-bar">
+        <div class="steps-bar-container">
+            <button class="prev-step-btn"><p class="text-regular-14">Назад</p></button>
+            <button class="next-step-btn"><p class="text-regular-14">Подтвердить</p></button>
+        </div>
+    </div>
+
+    <!-- Js Lib Files -->
+    <script src="./assets/libs/jquery/jquery.min.js"></script>
+
+    <!-- Custom Js -->
+    <script>
+
+        $(document).ready(function() {
+
+            // Infos
+            let user_first_and_last_name = 'Нурислам Абдуллаев';
+            let account_type = 'Компания';
+
+            $('.member-submit-step-1 .account-types .account-type').on('click', function() {
+                account_type = $(this).attr('rel');
+                account_type_index = $(this).attr('data-index');
+                $('.account-types .account-type').removeClass('active');
+                $(`.account-types .account-type.${account_type_index}`).addClass('active');
+            });
+
+            // Profile Picture
+            $('.choose-profile-picture-btn').on('click', function() {
+                $('#profile_picture_input').click();
+            });
+
+            function readURL(input) {
+                if (input.files && input.files[0]) {
+                    var reader = new FileReader();
+                    reader.onload = function (e) {
+                        $('.profile_picture').attr('src', e.target.result);
+                    }
+                    reader.readAsDataURL(input.files[0]);
+                }
+            }
+
+            $("#profile_picture_input").on('change', function () {
+                readURL(this);
+            });
+
+            // Reset Profile Picture
+            $('.reset-profile-picture-btn').on('click', function() {
+                $('.profile_picture').attr('src', './assets/images/users/user-1.svg');
+            });
+
+            // Steps Bar
+            $('.next-step-btn').on('click', function() {
+                if($('.user_first_and_last_name').val().length > 0) {   
+                    user_first_and_last_name = $('.user_first_and_last_name').val();
+                    $('.first-and-last-name-error').removeClass('active');
+                } else {
+                    $('.first-and-last-name-error').addClass('active');
+                    return false
+                }
+
+                $('.2nd_step_user_first_and_last_name').val(user_first_and_last_name);
+                $('.3rd_step_user_first_and_last_name').html(user_first_and_last_name);
+                $('.3rd_step_account_type').html(account_type);
+
+                let member_submit_step_rel = $('.member-submit-step.active').attr('rel');
+
+                if(member_submit_step_rel !== 'member-submit-step-3') {
+                    let member_submit_step = $('.member-submit-step.active');
+                    member_submit_step.next().addClass('active');
+                    member_submit_step.removeClass('active');
+                }
+            });
+
+            $('.prev-step-btn').on('click', function() {
+                let member_submit_step_rel = $('.member-submit-step.active').attr('rel');
+                
+                if(member_submit_step_rel !== 'member-submit-step-1') {
+                    let member_submit_step = $('.member-submit-step.active');
+                    member_submit_step.prev().addClass('active');
+                    member_submit_step.removeClass('active');
+                }
+            });
+
+        });
+
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,61 @@
+-- ディレクトリ --
+・Docker
+/sto_base/docker
+/sto_base/docker-compose.yml
+
+・ソースコード
+/sto_base/src/
+
+
+-- 構築手順 --
+※wsl使用時は不要
+・docker/app/000-default.confを修正
+<VirtualHost *:80>  
+       ServerAdmin webmaster@localhost  
+       DocumentRoot /var/www/html/sto_sales/public  
+       ErrorLog ${APACHE_LOG_DIR}/error.log  
+       CustomLog ${APACHE_LOG_DIR}/access.log combined  
+       <Directory /var/www/html/sto_sales/public>  
+           AllowOverride All  
+       </Directory>  
+</VirtualHost> 
+
+・STOシステムのソースをクローン
+sto_base/src/ へ移動
+こちらからクローン
+https://bitbucket.org/no1s_lab/sto_sales/src/master/
+
+・Dockerの起動
+$ cd sto_base
+$ docker-compose build --no-cache
+$ docker-compose up -d
+$ docker ps
+
+・developブランチを選択
+$ docker exec -it sto_app bash
+$ cd sto_sales/
+$ git fetch
+$ git checkout -b develop origin/develop
+
+・composerを実行
+$ composer install
+
+.env ファイルを作成
+cp .env.example .env
+
+・sto_appに戻って、migrationを実行
+※wsl使用時は不要
+$ docker exec -it sto_app bash
+# cd sto_sales
+# php artisan migrate
+
+-- 動作確認 --
+・ユーザ画面
+http://localhost:8080/
+ID: investor@no1s.biz
+PASS: investor1234
+
+・管理画面
+http://localhost:8080/admin
+ID: issuer@no1s.biz
+PASS: issuer1234

@@ -1,0 +1,176 @@
+<?php
+namespace App\Model\Table;
+
+use Cake\I18n\FrozenDate;
+use Cake\ORM\Query;
+use Cake\ORM\RulesChecker;
+use Cake\ORM\Table;
+use Cake\Validation\Validator;
+
+/**
+ * Members Model
+ *
+ * @property \App\Model\Table\CertificatesTable&\Cake\ORM\Association\HasMany $Certificates
+ * @property \App\Model\Table\MemorialsTable&\Cake\ORM\Association\HasMany $Memorials
+ *
+ * @method \App\Model\Entity\Member get($primaryKey, $options = [])
+ * @method \App\Model\Entity\Member newEntity($data = null, array $options = [])
+ * @method \App\Model\Entity\Member[] newEntities(array $data, array $options = [])
+ * @method \App\Model\Entity\Member|false save(\Cake\Datasource\EntityInterface $entity, $options = [])
+ * @method \App\Model\Entity\Member saveOrFail(\Cake\Datasource\EntityInterface $entity, $options = [])
+ * @method \App\Model\Entity\Member patchEntity(\Cake\Datasource\EntityInterface $entity, array $data, array $options = [])
+ * @method \App\Model\Entity\Member[] patchEntities($entities, array $data, array $options = [])
+ * @method \App\Model\Entity\Member findOrCreate($search, callable $callback = null, $options = [])
+ *
+ * @mixin \Cake\ORM\Behavior\TimestampBehavior
+ */
+class MembersTable extends Table
+{
+    /**
+     * Initialize method
+     *
+     * @param array $config The configuration for the Table.
+     * @return void
+     */
+    public function initialize(array $config)
+    {
+        parent::initialize($config);
+
+        $this->setTable('members');
+        $this->setDisplayField('name');
+        $this->setPrimaryKey('id');
+
+        $this->addBehavior('Timestamp');
+    }
+
+    /**
+     * Default validation rules.
+     *
+     * @param \Cake\Validation\Validator $validator Validator instance.
+     * @return \Cake\Validation\Validator
+     */
+    public function validationDefault(Validator $validator)
+    {
+        $validator
+            ->integer('id')
+            ->allowEmptyString('id', null, 'create');
+
+        $validator
+            ->scalar('name')
+            ->maxLength('name', 64)
+            ->requirePresence('name', 'create')
+            ->notEmptyString('name');
+
+        $validator
+            ->email('email')
+            ->requirePresence('email', 'create')
+            ->notEmptyString('email');
+
+        $validator
+            ->scalar('password')
+            ->maxLength('password', 255)
+            ->requirePresence('password', 'create')
+            ->notEmptyString('password', __("{0} is required", __('Password')), 'create')
+            ->add('password', [
+                'length' => [
+                    'rule' => ['minLength', MEMBER_PWD_MIN_LENGTH],
+                    'message' => __('Password must be at least {0} digits', MEMBER_PWD_MIN_LENGTH),
+                ]
+            ]);
+        
+        $validator
+            ->allowEmptyString('birthday')
+            ->scalar('birthday')
+            ->maxLength('birthday', 50)
+            ->add('birthday', [
+                'isFuture' => [
+                    'rule' => function ($value) {
+                        return !(new FrozenDate($value))->isFuture();
+                    },
+                    'message' => __('You cannot enter a future date on your date of birth'),
+                ]
+            ]);
+        
+        $validator
+            ->integer('language')
+            ->notEmptyString('language');
+
+        $validator
+            ->scalar('time_zone')
+            ->maxLength('time_zone', 50)
+            ->notEmptyString('time_zone');
+
+        $validator
+            ->integer('division')
+            ->notEmptyString('division');
+
+        return $validator;
+    }
+
+    /**
+     * Password validation rules.
+     *
+     * @param \Cake\Validation\Validator $validator Validator instance.
+     * @return \Cake\Validation\Validator
+     */
+    public function validationPassword(Validator $validator)
+    {
+        $validator
+            ->requirePresence('password', 'create')
+            ->notEmpty('password');
+
+        return $validator;
+    }
+
+    /**
+     * Returns a rules checker object that will be used for validating
+     * application integrity.
+     *
+     * @param \Cake\ORM\RulesChecker $rules The rules object to be modified.
+     * @return \Cake\ORM\RulesChecker
+     */
+    public function buildRules(RulesChecker $rules)
+    {
+        $rules->add($rules->isUnique(['email'], __("{0} is not unique", __('Email'))));
+
+        return $rules;
+    }
+    
+    /**
+     * ログイン用
+     *
+     * @param Query $query
+     * @param array $options List of options to pass to the finder
+     * @return Query
+     */
+    public function findLogin(Query $query, array $options){
+        $query->where([
+            'Members.activate_flg' => ACTIVATE_FLG_ON
+        ]);
+        return $query;
+    }
+
+    /**
+     * 会員リストを取得する（検索条件付き）
+     *
+     * @param array $options List of options to pass to the finder, Or Search Params
+     * @return query object
+     */
+    public function findMembers($options)
+    {
+        $query = $this->find();
+        var_dump($query);
+        extract($options);
+
+        if (!empty($name)) {
+            $query->where(["Members.name like" => "%{$name}%"]);
+        }
+
+        if (!empty($mail)) {
+            $query->where(["Members.email like" => "%{$mail}%"]);
+        }
+
+        return $query;
+    }
+
+}

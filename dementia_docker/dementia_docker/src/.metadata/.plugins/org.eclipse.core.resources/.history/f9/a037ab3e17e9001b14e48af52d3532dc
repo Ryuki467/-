@@ -1,0 +1,166 @@
+<?php
+namespace App\Controller\Supporter;
+
+use App\Controller\Supporter\AppController;
+use Cake\Routing\Router;
+use Cake\Datasource\ConnectionManager;
+use Cake\ORM\TableRegistry;
+use Cake\Log\Log;
+
+/**
+ * Lectures Controller
+ *
+ * @property \App\Model\Table\LecturesTable $Lectures
+ *
+ * @method \App\Model\Entity\Lecture[]|\Cake\Datasource\ResultSetInterface paginate($object = null, array $settings = [])
+ */
+class LecturesController extends AppController
+{
+    public function index()
+    {
+        $user = $this->Session->read('Auth.Supporter');
+        
+        $data = $this->request->getQuery();
+        
+        $this->LecturesHistories = TableRegistry::get('lectures_histories');
+        
+        $subquery = $this->LecturesHistories->find('all')
+            ->select(['id','member_id','lecture_id','status'])
+            ->where(['member_id' => $user["id"]]);
+        
+        $list = $this->Lectures->findLecturesForSupporter($data)
+        ->select(['id','title','message','movie_url','lh.lectures_histories__status','lh.lectures_histories__id'])
+        ->join([
+            'table' => $subquery,
+            'alias' => 'lh',
+            'type'  => 'LEFT',
+            'conditions' => 'lh.lectures_histories__lecture_id = lectures.id',
+        ])->where(['display_flg' => '1'])->where(['lh.lectures_histories__status IS NOT' => NULL]);
+        
+        $options = [
+            'limit' => 10,
+            'order' => ['id' => 'ASC'],
+        ];
+        
+        $lectures = $this->paginate($list, $options);
+        
+        $header = [
+            'title' => __('Lecture'),
+            'description' => '',
+            'breadcrumbs' => [
+                'Home' => Router::url(['controller' => 'Dashboards'], true),
+                __('List {0}', __('Lecture')) => ''
+            ]
+        ];
+        
+        $first_flg = true;
+        $this->set($data);
+        $this->set(compact('lectures','user','header','first_flg'));
+    }
+    
+    /**
+     * View method
+     *
+     * @param string|null $id Content id.
+     * @return \Cake\Http\Response|null
+     */
+    public function view($id = null)
+    {
+        $parameter = explode(",", $id);
+        $id = $parameter[0];
+        $file_type = 1;
+        if(count($parameter) == 2){
+            $file_type = 2;
+        }
+        
+        $this->LecturesHistories = TableRegistry::get('lectures_histories');
+        $lectures_histories = $this->LecturesHistories->get($id, [
+            'contain' => [],
+        ]);
+        
+        $lecture = $this->Lectures->get($lectures_histories->lecture_id, [
+            'contain' => []
+        ]);
+        
+        $this->viewBuilder()->setLayout(false);
+        
+        switch ($lecture->display_flg) {       
+            case CONTENT_TYPE_MOVIE:
+                $response = $this->response;
+                
+                $url = $lecture->movie_url . 
+                "<script src='https://code.jquery.com/jquery-3.6.0.min.js'></script>
+                <script>
+                      var iframe = document.querySelector('iframe');
+                      var player = new Vimeo.Player(iframe);
+
+                      player.on('ended', function(){
+                          $('iframe').css('display','none');
+                          var id = ' . $id . ';
+                          $.post({
+                              url: '/supporter/lectures/next',
+                              dataType:'json',
+                              data: id,
+                          })
+                          .done(function(response){
+                                if(response.result === 'NG'){
+                                    alert('保存失敗');
+                                    return false;
+                                }
+                                alert('保存成功');
+                                return true;
+                           }).fail(function(){
+                                alert('通信失敗');
+                           });
+                      });
+                </script>";
+                
+                $response->getBody()->write($url);
+                
+                //該当するlectures_historiesテーブルのstatusを0から1へ変更
+                $data = [
+                    'id' =>  $lectures_histories["id"],
+                    'member_id' =>  $lectures_histories["member_id"],
+                    'lecture_id' =>  $lectures_histories["lecture_id"],
+                    'status' =>  1,
+                    'modified' =>  $lectures_histories["modified"],
+                    'created' =>  $lectures_histories["created"],
+                ];
+                $lectures_histories = $this->LecturesHistories->patchEntity($lectures_histories, $data);
+                
+                return $response;
+        }
+    }
+    
+    public function next(){
+        if (!$this->getRequest()->isAll(['ajax', 'post'])) {
+            return $this->getResponse()->withType('json')->withStringBody(json_encode([
+                'result' => 'NG'
+            ]));
+        }
+        
+        // 何かの保存処理
+        Log::debug($hoge);
+        
+        return $this->getResponse()->withType('json')->withStringBody(json_encode([
+            'result' => 'OK',
+        ]));
+        
+        /*
+        //再生し終わった動画の状態を完了にして、次のlectures_historiesに0をinsert
+        $this->LecturesHistories = TableRegistry::get('lectures_histories');
+        $lectures_histories = $this->LecturesHistories->get($room_id, [
+            'contain' => [],
+        ]);
+        $data = [
+            'id' =>  $lectures_histories["id"],
+            'member_id' =>  $lectures_histories["member_id"],
+            'lecture_id' =>  $lectures_histories["lecture_id"],
+            'status' =>  2,
+            'modified' =>  $lectures_histories["modified"],
+            'created' =>  $lectures_histories["created"],
+        ];
+        $lectures_histories = $this->LecturesHistories->patchEntity($lectures_histories, $data);
+        */
+    }
+}

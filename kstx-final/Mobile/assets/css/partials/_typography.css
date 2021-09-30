@@ -1,0 +1,134 @@
+/* Font Family */
+@font-face {
+    font-family: 'Primary Ultralight';
+    font-style: normal;
+    font-weight: normal;
+    src: local('Primary Ultralight'), url('../../fonts/sf-ui-display/ultralight.woff') format('woff');
+}
+
+@font-face {
+    font-family: 'Primary Thin';
+    font-style: normal;
+    font-weight: normal;
+    src: local('Primary Thin'), url('../../fonts/sf-ui-display/thin.woff') format('woff');
+}
+
+@font-face {
+    font-family: 'Primary Light';
+    font-style: normal;
+    font-weight: normal;
+    src: local('Primary Light'), url('../../fonts/sf-ui-display/light.woff') format('woff');
+}
+
+@font-face {
+    font-family: 'Primary Regular';
+    font-style: normal;
+    font-weight: normal;
+    src: local('Primary Regular'), url('../../fonts/sf-ui-display/regular.woff') format('woff');
+}
+
+@font-face {
+    font-family: 'Primary Medium';
+    font-style: normal;
+    font-weight: normal;
+    src: local('Primary Medium'), url('../../fonts/sf-ui-display/medium.woff') format('woff');
+}
+
+@font-face {
+    font-family: 'Primary Semibold';
+    font-style: normal;
+    font-weight: normal;
+    src: local('Primary Semibold'), url('../../fonts/sf-ui-display/semibold.woff') format('woff');
+}
+
+@font-face {
+    font-family: 'Primary Bold';
+    font-style: normal;
+    font-weight: normal;
+    src: local('Primary Bold'), url('../../fonts/sf-ui-display/bold.woff') format('woff');
+}
+
+@font-face {
+    font-family: 'Primary Heavy';
+    font-style: normal;
+    font-weight: normal;
+    src: local('Primary Heavy'), url('../../fonts/sf-ui-display/heavy.woff') format('woff');
+}
+
+@font-face {
+    font-family: 'Primary Black';
+    font-style: normal;
+    font-weight: normal;
+    src: local('Primary Black'), url('../../fonts/sf-ui-display/black.woff') format('woff');
+}
+
+/* Typography */
+h1 {
+    font-family: 'Primary Bold';
+    font-size: 28px;
+}
+
+h2 {
+    font-family: 'Primary Bold';
+    font-size: 20px;
+}
+
+h3 {
+    font-family: 'Primary Bold';
+    font-size: 19px;
+}
+
+h4 {
+    font-family: 'Primary Bold';
+    font-size: 17px;
+}
+
+h5 {
+    font-family: 'Primary Bold';
+    font-size: 16px;
+}
+
+h6 {
+    font-family: 'Primary Medium';
+    font-size: 16px;
+}
+
+.text-bold-14 {
+    font-family: 'Primary Bold';
+    font-size: 14px;
+}
+
+.text-regular-14 {
+    font-family: 'Primary Regular';
+    font-size: 14px;
+}
+
+.text-bold-12 {
+    font-family: 'Primary Bold';
+    font-size: 12px;
+}
+
+.text-regular-12 {
+    font-family: 'Primary Regular';
+    font-size: 12px;
+}
+
+.text-bold-11 {
+    font-family: 'Primary Bold';
+    font-size: 11px;
+}
+
+.text-regular-11 {
+    font-family: 'Primary Regular';
+    font-size: 11px;
+}
+
+.text-bold-10 {
+    font-family: 'Primary Bold';
+    font-size: 10px;
+}
+
+.text-regular-10 {
+    font-family: 'Primary Regular';
+    font-size: 10px;
+}

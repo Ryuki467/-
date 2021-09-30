@@ -1,0 +1,194 @@
+.right-bar {
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    z-index: 1001;
+    width: 100%;
+    height: 100%;
+    background: #fff;
+    transform: translateX(100%);
+    -webkit-transform: translateX(100%);
+    -moz-transform: translateX(100%);
+    -ms-transform: translateX(100%);
+    -o-transform: translateX(100%);
+    transition: var(--transition);
+    -webkit-transition: var(--transition);
+    -moz-transition: var(--transition);
+    -ms-transition: var(--transition);
+    -o-transition: var(--transition);
+}
+
+.right-bar.active {
+    transform: translateX(0%);
+    -webkit-transform: translateX(0%);
+    -moz-transform: translateX(0%);
+    -ms-transform: translateX(0%);
+    -o-transform: translateX(0%);
+}
+
+.right-bar .right-bar-container {
+    width: 100%;
+    height: 100%;
+    padding: var(--layout-y-spacing) 0px;
+    position: relative;
+}
+
+.right-bar .right-bar-container .right-bar-top {
+    width: 100%;
+    padding: 0px var(--layout-x-spacing);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.right-bar .right-bar-container .right-bar-top .right-bar-close-trigger {
+    display: flex;
+    align-items: center;
+}
+
+.right-bar .right-bar-container .right-bar-top .right-bar-close-trigger svg {
+    margin-right: 10px;
+}
+
+.right-bar .right-bar-container .right-bar-top .right-bar-close-trigger p {
+    color: var(--solid-blue-primary-color);
+}
+
+.right-bar .right-bar-container .user {
+    padding: 20px var(--layout-x-spacing);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 4px solid #FCFBFB;
+}
+
+.right-bar .right-bar-container .user .user-left {
+    display: flex;
+    align-items: center;
+    margin-right: 30px;
+}
+
+.right-bar .right-bar-container .user .user-left img {
+    width: 65px;
+    height: 65px;
+    object-fit: cover;
+    margin-right: 10px;
+    border-radius: 50%;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    -ms-border-radius: 50%;
+    -o-border-radius: 50%;
+}
+
+.right-bar .right-bar-container .user .user-left h4 {
+    margin-bottom: 5px;
+}
+
+.right-bar .right-bar-container .user .user-left p {
+    color: var(--text-color);
+}
+
+.right-bar .right-bar-container .balance {
+    padding: 0px var(--layout-x-spacing);
+    height: 60px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 4px solid #FCFBFB;
+}
+
+.right-bar .right-bar-container .balance .balance-left {
+    display: flex;
+    align-items: center;
+    margin-right: 30px;
+}
+
+.right-bar .right-bar-container .balance .balance-left svg {
+    width: 25px;
+    margin-right: 10px;
+}
+
+.right-bar .right-bar-container .balance a {
+    color: var(--solid-blue-primary-color);
+    text-align: right;
+}
+
+.right-bar .right-bar-container ul {
+    height: calc(100% - 218px);
+    overflow: scroll;
+}
+
+.right-bar .right-bar-container ul::-webkit-scrollbar {
+    display: none;
+}
+
+.right-bar .right-bar-container ul li:last-child {
+    border-bottom: 4px solid #FCFBFB;
+}
+
+.right-bar .right-bar-container ul li a {
+    padding: 0px var(--layout-x-spacing);
+    height: 60px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: var(--transition);
+    -webkit-transition: var(--transition);
+    -moz-transition: var(--transition);
+    -ms-transition: var(--transition);
+    -o-transition: var(--transition);
+}
+
+.right-bar .right-bar-container ul li a:hover {
+    background: rgba(18, 58, 235, 0.01);
+}
+
+.right-bar .right-bar-container ul li a .left {
+    display: flex;
+    align-items: center;
+    margin-right: 30px;
+}
+
+.right-bar .right-bar-container ul li a .left svg {
+    width: 25px;
+}
+
+.right-bar .right-bar-container ul li a .left p {
+    margin-left: 10px;
+    color: var(--title-text-color);
+}
+
+.right-bar .right-bar-container ul li a .right {
+    display: flex;
+    align-items: center;
+}
+
+.right-bar .right-bar-container ul li a .right .notification-icon {
+    width: 24px;
+    height: 24px;
+    background: #FF4768;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 10px;
+    color: #fff;
+    margin-right: 20px;
+}
+
+.right-bar .right-bar-container .right-bar-bottom {
+    padding: 20px 15px;
+    position: absolute;
+    bottom: 0px;
+    left: 0px;
+    width: 100%;
+    background: #fff;
+    border-top: 4px solid #FCFBFB;
+    text-align: center;
+}
+
+.right-bar .right-bar-container .right-bar-bottom a {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--solid-blue-primary-color);
+}

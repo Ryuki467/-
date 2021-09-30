@@ -1,0 +1,250 @@
+/* All Partial Files */
+@import "../partials/_variables.css";
+@import "../partials/_global-styles.css";
+
+/* All Component Files */
+@import "../components/_navbar.css";
+@import "../components/_footer.css";
+
+/* Member Submit Step Section */
+.member-submit-step {
+    padding: 50px 0px;
+    min-height: 80vh;
+}
+
+.member-submit-step .container h2 {
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.member-submit-step .container .section-top {
+    margin-bottom: 50px;
+}
+
+.member-submit-step .container .section-top a {
+    color: var(--solid-blue-primary-color);
+    transition: var(--transition);
+    -webkit-transition: var(--transition);
+    -moz-transition: var(--transition);
+    -ms-transition: var(--transition);
+    -o-transition: var(--transition);
+}
+
+.member-submit-step .container .section-top a:hover {
+    opacity: 0.7;
+}
+
+.member-submit-step .container .section-top a svg {
+    margin-right: 5px;
+}
+
+.member-submit-step .container .member-submit-step-content {
+    width: 100%;
+    padding-left: 100px;
+    border-left: 5px solid var(--solid-blue-primary-color);
+}
+
+.member-submit-step .container .member-submit-step-content .content-container {
+    width: 450px;
+}
+
+.member-submit-step .container .member-submit-step-content .input-group {
+    width: 100%;
+    margin-bottom: 40px;
+}
+
+.member-submit-step .container .member-submit-step-content .input-group label {
+    display: block;
+    font-family: 'Primary Semibold';
+    margin-bottom: 20px;
+}
+
+.member-submit-step .container .member-submit-step-content .input-group input {
+    width: 100%;
+    height: 50px;
+    padding: 0px 15px;
+    border: 1px solid #D8E4FA;
+    background: #fff;
+    border-radius: 15px;
+    -webkit-border-radius: 15px;
+    -moz-border-radius: 15px;
+    -ms-border-radius: 15px;
+    -o-border-radius: 15px;
+    text-align: center;
+}
+
+.member-submit-step .container .member-submit-step-content .input-group input::placeholder {
+    color: #888;
+}
+
+.member-submit-step .container .member-submit-step-content .profile-picture-group {
+    margin-bottom: 40px;
+}
+
+.member-submit-step .container .member-submit-step-content .profile-picture-group label {
+    display: block;
+    font-family: 'Primary Semibold';
+    margin-bottom: 20px;
+}
+
+.member-submit-step .container .member-submit-step-content .profile-picture-group .profile-picture-group-bottom {
+    display: flex;
+    align-items: center;
+}
+
+.member-submit-step .container .member-submit-step-content .profile-picture-group .profile-picture-group-bottom img {
+    width: 130px;
+    height: 130px;
+    object-fit: cover;
+    border-radius: 50%;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    -ms-border-radius: 50%;
+    -o-border-radius: 50%;
+    margin-right: 20px;
+}
+
+.member-submit-step .container .member-submit-step-content .profile-picture-group .profile-picture-group-bottom .btns {
+    display: flex;
+    align-items: center;
+}
+
+.member-submit-step .container .member-submit-step-content .profile-picture-group .profile-picture-group-bottom .btns button {
+    display: flex;
+    align-items: center;
+    font-size: 16px;
+    font-family: 'Primary Semibold';
+    color: var(--solid-blue-primary-color);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    -webkit-transition: all 0.3s ease;
+    -moz-transition: all 0.3s ease;
+    -ms-transition: all 0.3s ease;
+    -o-transition: all 0.3s ease;
+}
+
+.member-submit-step .container .member-submit-step-content .profile-picture-group .profile-picture-group-bottom .btns button:nth-child(1) {
+    margin-right: 20px;
+}
+
+.member-submit-step .container .member-submit-step-content .profile-picture-group .profile-picture-group-bottom .btns button:hover {
+    opacity: 0.7;
+}
+
+.member-submit-step .container .member-submit-step-content .profile-picture-group .profile-picture-group-bottom .btns button svg {
+    margin-right: 5px;
+}
+
+.member-submit-step .container .member-submit-step-content .account-type-input-group {
+    width: 100%;
+    margin-bottom: 40px;
+}
+
+.member-submit-step .container .member-submit-step-content .account-type-input-group label {
+    display: block;
+    font-family: 'Primary Semibold';
+    margin-bottom: 30px;
+}
+
+.member-submit-step .container .member-submit-step-content .account-type-input-group .account-types .account-type {
+    display: flex;
+    align-items: center;
+    margin-bottom: 25px;
+    cursor: pointer;
+}
+
+.member-submit-step .container .member-submit-step-content .account-type-input-group .account-types .account-type:last-child {
+    margin-bottom: 0px;
+}
+
+.member-submit-step .container .member-submit-step-content .account-type-input-group .account-types .account-type .radio {
+    width: 24px;
+    height: 24px;
+    border: 1px solid #BDBCDB;
+    border-radius: 50%;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    -ms-border-radius: 50%;
+    -o-border-radius: 50%;
+    margin-right: 10px;
+    position: relative;
+}
+
+.member-submit-step .container .member-submit-step-content .account-type-input-group .account-types .account-type.active .radio {
+    border-color: var(--solid-blue-primary-color);
+}
+
+.member-submit-step .container .member-submit-step-content .account-type-input-group .account-types .account-type .radio::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    -webkit-transform: translate(-50%, -50%);
+    -moz-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    -o-transform: translate(-50%, -50%);
+    width: 10px;
+    height: 10px;
+    background: var(--solid-blue-primary-color);
+    border-radius: 50%;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    -ms-border-radius: 50%;
+    -o-border-radius: 50%;
+    display: none;
+}
+
+.member-submit-step .container .member-submit-step-content .account-type-input-group .account-types .account-type.active .radio::after {
+    display: block;
+}
+
+.member-submit-step .container .member-submit-step-content .account-type-input-group .account-types .account-type p {
+    font-family: 'Primary Medium';
+}
+
+.member-submit-step .container .member-submit-step-content .step-bottom {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 10px;
+}
+
+.member-submit-step .container .member-submit-step-content .step-bottom a {
+    width: 100%;
+    height: 50px;
+    border: 1px solid var(--solid-blue-primary-color);
+    border-radius: 15px;
+    -webkit-border-radius: 15px;
+    -moz-border-radius: 15px;
+    -ms-border-radius: 15px;
+    -o-border-radius: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: var(--transition);
+    -webkit-transition: var(--transition);
+    -moz-transition: var(--transition);
+    -ms-transition: var(--transition);
+    -o-transition: var(--transition);
+}
+
+.member-submit-step .container .member-submit-step-content .step-bottom a:hover {
+    opacity: 0.7;
+}
+
+.member-submit-step .container .member-submit-step-content .step-bottom a p {
+    font-family: 'Primary Semibold';
+    color: var(--solid-blue-primary-color);
+}
+
+.member-submit-step .container .member-submit-step-content .step-bottom .next-step-btn {
+    border-color: var(--solid-blue-primary-color);
+    background: var(--solid-blue-primary-color);
+    box-shadow: 0px 20px 50px rgba(54, 114, 233, 40%);
+}
+
+.member-submit-step .container .member-submit-step-content .step-bottom .next-step-btn p {
+    font-family: 'Primary Regular';
+    color: #fff;
+}

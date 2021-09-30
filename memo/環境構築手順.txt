@@ -1,0 +1,112 @@
+#git install
+https://www.curict.com/item/60/60bfe0e.html
+
+#VirtualBoxインストール
+OSに合ったVirtualBoxをダウンロードしてインストール
+https://www.virtualbox.org/wiki/Downloads
+
+#Vagrantのインストール
+OSに合ったVagrantをダウンロードしてインストール
+https://www.vagrantup.com/downloads.html
+
+
+git clone **** 
+cd dementia
+git checkout -b develop origin/develop
+
+vagrant init bento/ubuntu-20.04
+#Vagrantfileを編集
+```
+Vagrant.configure("2") do |config|
+  config.vm.box = "bento/ubuntu-20.04"
+  config.vm.network "forwarded_port", guest: 80, host: 8080
+  config.vm.network "private_network", ip: "192.168.33.10"
+  config.vm.synced_folder "./dementia", "/vagrant/dementia", mount_options:['dmode=777','fmode=777']
+end
+
+```
+
+vagrant up
+vagrant ssh
+
+以下、仮想環境での作業
+sudo apt-get update
+
+#PHP7.4インストール
+sudo apt -y install php7.4
+#拡張モジュールインストール
+sudo apt -y install php7.4-curl php7.4-zip php-mysqli php7.4-xml php7.4-gd php7.4-intl php7.4-xmlrpc php7.4-soap php7.4-mbstring
+
+#コンポーザーのインストールおよび設定
+curl https://getcomposer.org/installer | php
+sudo mv ./composer.phar $(dirname $(which php))/composer && chmod +x "$_"
+composer --version
+
+#Apacheのインストール、起動設定
+sudo apt install apache2
+sudo systemctl enable apache2
+sudo systemctl start apache2
+
+#mariadbのインストール
+sudo apt install mariadb-server
+sudo mysql_secure_installation
+sudo systemctl enable mariadb
+<<<
+Enter current password for root (enter for none):
+→ 未入力のままEnterキーを押下
+Set root password? [Y/n]
+→ N
+後続はすべて Y
+>>>
+
+sudo mariadb
+MariaDB [(none)]> GRANT ALL ON *.* TO 'admin'@'localhost' IDENTIFIED BY 'password' WITH GRANT OPTION;
+	
+MariaDB [(none)]> FLUSH PRIVILEGES;
+MariaDB [(none)]> CREATE DATABASE dementia_db DEFAULT CHARACTER SET utf8;
+MariaDB [(none)]> exit
+
+# Vagrantの共有フォルダにパスを設定
+sudo rm -rf /var/www/html
+sudo ln -fs /vagrant /var/www/html
+
+cd /var/www/html/dementia
+composer install
+
+cd /etc/apache2/sites-available
+sudo vim 000-default.conf
+```
+<VirtualHost *:80>
+    DocumentRoot /var/www/html/dementia
+</VirtualHost>
+```
+
+sudo vi /etc/apache2/apache2.conf
+```
+<Directory /var/www/>
+        Options Indexes FollowSymLinks
+        AllowOverride All
+        Require all granted
+</Directory>
+```
+
+#mod_rewriteを有効
+sudo a2enmod rewrite
+sudo service apache2 restart
+
+#config/app.php を編集
+```
+    'Datasources' => [
+            'username' => 'admin',
+            'password' => 'password',
+            'database' => 'dementia_db',
+    ],
+```
+
+cd /var/www/html/dementia
+bin/cake migrations migrate
+bin/cake migrations seed
+
+#以下をブラウザで開く
+http://192.168.33.10/admin
+ID/PASS: no1s-admin@test.com / no1no2no3

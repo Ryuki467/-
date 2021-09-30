@@ -1,0 +1,85 @@
+/* All Partial Files */
+@import "../partials/_variables.css";
+@import "../partials/_global-styles.css";
+
+/* All Component Files */
+@import "../components/_navbar.css";
+@import "../components/_footer.css";
+
+body {
+    background: linear-gradient(var(--solid-blue-secondary-color), var(--solid-violet-primary-color));
+}
+
+/* Futures Section */
+.futures {
+    padding: 50px 0px;
+}
+
+.futures .container h2 {
+    color: #fff;
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.futures .container .section-top {
+    margin-bottom: 50px;
+}
+
+.futures .container .section-top a {
+    color: #fff;
+    transition: var(--transition);
+    -webkit-transition: var(--transition);
+    -moz-transition: var(--transition);
+    -ms-transition: var(--transition);
+    -o-transition: var(--transition);
+}
+
+.futures .container .section-top a:hover {
+    opacity: 0.7;
+}
+
+.futures .container .section-top a svg {
+    margin-right: 5px;
+}
+
+.futures .container .parts {
+    width: 60%;
+    margin: auto;
+}
+
+.futures .container .part {
+    margin-bottom: 50px;
+}
+
+.futures .container .part:last-child {
+    margin-bottom: 0px;
+}
+
+.futures .container .part img {
+    width: 100%;
+}
+
+.futures .container .part p {
+    font-size: 16px;
+    color: #fff;
+}
+
+.futures .container .part ul li {
+    font-size: 16px;
+    color: #fff;
+    display: flex;
+    align-items: center;
+}
+
+.futures .container .part ul li span {
+    display: block;
+    width: 5px;
+    height: 5px;
+    background: #fff;
+    border-radius: 50%;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    -ms-border-radius: 50%;
+    -o-border-radius: 50%;
+    margin-right: 10px;
+}

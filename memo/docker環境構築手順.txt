@@ -1,0 +1,53 @@
+・zipを解凍
+任意のフォルダでzipファイルを解凍する
+
+・ソースをクローン
+\dementia_docker\src に移動し、
+https://bitbucket.org/no1s_lab/dementia/src/master/ のソースをクローン
+git clone **** 
+cd dementia
+git checkout -b develop origin/develop
+
+・Dockerの起動
+\dementia_docker に移動し、
+docker-compose build --no-cache
+docker-compose up -d
+
+docker ps
+docker exec -it dementia_app bash
+
+cd /var/www/html/dementia
+composer install
+
+docker exec -it db bash
+mysql -uroot -p
+mysql> GRANT ALL ON *.* TO 'admin'@'%' IDENTIFIED BY 'f4BRFmkh' WITH GRANT OPTION;
+mysql> FLUSH PRIVILEGES;
+mysql> CREATE DATABASE dementia_db DEFAULT CHARACTER SET utf8;
+
+config/app.php を編集
+```
+    'Datasources' => [
+            'host' => 'db',
+            'username' => 'admin',
+            'password' => 'f4BRFmkh',
+            'database' => 'dementia_db',
+    ],
+```
+
+docker exec -it dementia_app bash
+cd /var/www/html/dementia
+bin/cake migrations migrate
+bin/cake migrations seed
+
+
+#以下をブラウザで開く
+http://localhost:8080/admin
+ID/PASS: no1s-admin@test.com / no1no2no3
+
+//支援者側のURL
+http://localhost:8080/supporter 
+
+
+http://192.168.99.100:8080/admin
+

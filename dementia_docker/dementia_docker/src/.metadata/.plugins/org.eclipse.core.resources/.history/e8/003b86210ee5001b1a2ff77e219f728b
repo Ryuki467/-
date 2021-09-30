@@ -1,0 +1,95 @@
+<?php
+namespace App\Controller\Supporter;
+
+use App\Controller\Supporter\AppController;
+use Cake\Routing\Router;
+use Cake\Datasource\ConnectionManager;
+use Cake\ORM\TableRegistry;
+
+/**
+ * Lectures Controller
+ *
+ * @property \App\Model\Table\LecturesTable $Lectures
+ *
+ * @method \App\Model\Entity\Lecture[]|\Cake\Datasource\ResultSetInterface paginate($object = null, array $settings = [])
+ */
+class LecturesController extends AppController
+{
+    public $helpers = [
+        'Paginator' => ['templates' => 'paginator-templates']
+    ];
+    
+    public $components = ['Upload', 'Paginator'];
+    /**
+     * Index method
+     *
+     * @return \Cake\Http\Response|null
+     */
+    public function index()
+    {
+        $connection = ConnectionManager::get('default'); 
+        $user = $this->Session->read('Auth.Supporter');
+        
+        $count = $connection->execute('select count(*) from lectures l inner join lectures_histories lh on l.id = lh.lecture_id
+        where display_flg = 1
+        and lh.status = 2')->fetchAll('assoc');
+        
+        $result = $connection->execute('
+        select 
+            l.id,l.title,l.message,l.movie_url,
+            case lh.status 
+        		when 2 then 2
+                when 1 then 1
+                else 0
+            end as status
+        from lectures l left join lectures_histories lh on l.id = lh.lecture_id where display_flg = 1 limit 13')->fetchAll('assoc');
+        
+        $data = $this->request->getQuery();
+        
+        $this->LecturesHistories = TableRegistry::get('lectures_histories');
+        $subquery = $this->LecturesHistories->find('all')
+            ->select(['member_id','lecture_id','status'])
+            ->where(['member_id' => $user["id"]]);
+        $list = $this->Lectures->findLectures_status($data)
+        ->select(['id','title','message','movie_url'])
+        ->join([
+            'table' => $subquery,
+            'alias' => 'lh',
+            'type'  => 'LEFT',
+            'conditions' => 'lh.lectures_histories__lecture_id = lectures.id',
+        ]);
+        
+        $case = $list->newExpr()->addCase(
+            [
+                $list->newExpr()->add(['lectures_histories__status' => '2']),
+                $list->newExpr()->add(['lectures_histories__status' => '1']),
+                $list->newExpr()->add(['lectures_histories__status IS' => NULL]),
+            ],
+            [2,1,0],
+            ['integer','integer','integer']
+            );
+        
+        $list->select(['lectures_histories__status' => $case])->where(['display_flg' => '1'])->limit(13);
+        var_dump($list);
+        
+        $options = [
+            'limit' => 10,
+            'order' => ['id' => 'ASC'],
+        ];
+        
+        $lectures = $this->paginate($list, $options);
+        
+        $header = [
+            'title' => __('Lecture'),
+            'description' => '',
+            'breadcrumbs' => [
+                'Home' => Router::url(['controller' => 'Dashboards'], true),
+                __('List {0}', __('Lecture')) => ''
+            ]
+        ];
+        
+        $next_flg = true;
+        $this->set($data);
+        $this->set(compact('lectures','user','header','next_flg'));
+    }
+}

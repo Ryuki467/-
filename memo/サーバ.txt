@@ -1,0 +1,10 @@
+Linux OS サーバで使う　無料
+Windows
+Mac
+Android
+iOS
+
+・仮想マシン
+
+・Vagrant ベーグラント　完全に仮想マシンを作る
+・Docker ドッカー　　　 一部を元のマシンから借りて使う

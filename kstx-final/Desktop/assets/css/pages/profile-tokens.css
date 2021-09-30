@@ -1,0 +1,350 @@
+/* All Partial Files */
+@import "../partials/_variables.css";
+@import "../partials/_global-styles.css";
+
+/* All Component Files */
+@import "../components/_navbar.css";
+@import "../components/_footer.css";
+
+/* Profile Tokens Section */
+.profile-tokens {
+    padding: 50px 0px;
+}
+
+.profile-tokens .container h2 {
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.profile-tokens .container .section-top {
+    margin-bottom: 50px;
+}
+
+.profile-tokens .container .section-top a {
+    color: var(--solid-blue-primary-color);
+    transition: var(--transition);
+    -webkit-transition: var(--transition);
+    -moz-transition: var(--transition);
+    -ms-transition: var(--transition);
+    -o-transition: var(--transition);
+}
+
+.profile-tokens .container .section-top a:hover {
+    opacity: 0.7;
+}
+
+.profile-tokens .container .section-top a svg {
+    margin-right: 5px;
+}
+
+.profile-tokens .container .currencies-card {
+    position: relative;
+}
+
+.profile-tokens .container .currencies-card .ellipse-4 {
+    position: absolute;
+    top: -30px;
+    right: -30px;
+    z-index: -1;
+}
+
+.profile-tokens .container .currencies-card .ellipse-5 {
+    position: absolute;
+    left: -30px;
+    bottom: -30px;
+    z-index: -1;
+}
+
+.profile-tokens .container .currencies-card .currencies-card-container {
+    width: 100%;
+    border: 1px solid #ebebeb;
+    background: rgba(255, 255, 255, 0.4);
+    backdrop-filter: blur(25px);
+    -webkit-backdrop-filter: blur(25px);
+    box-shadow: 30px 10px 50px rgba(232, 52, 236, 0.1);
+    border-radius: 25px;
+    padding: 40px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 40px;
+}
+
+.profile-tokens .container .currencies-card .currencies-card-container .currencies-card-part {
+    width: 100%;
+}
+
+.profile-tokens .container .currencies-card .currencies-card-container .currencies-card-part h3 {
+    margin-bottom: 30px;
+}
+
+.profile-tokens .container .currencies-card .currencies-card-container .currencies-card-part .currency {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-bottom: 20px;
+}
+
+.profile-tokens .container .currencies-card .currencies-card-container .currencies-card-part .currency:last-child {
+    margin-bottom: 0px;
+}
+
+.profile-tokens .container .currencies-card .currencies-card-container .currencies-card-part .currency .currency-left {
+    display: flex;
+    align-items: flex-end;
+}
+
+.profile-tokens .container .currencies-card .currencies-card-container .currencies-card-part .currency .currency-left p {
+    margin-left: 10px;
+}
+
+.profile-tokens .container .currencies-card .currencies-card-container .currencies-card-part .currency span {
+    margin: 0px 10px;
+    color: #888888;
+    font-family: 'Primary Thin';
+    opacity: 0.5;
+    height: 14px;
+    display: flex;
+    flex: 1;
+    overflow: hidden;
+}
+
+/* Tokens Section */
+.tokens {
+    margin-top: 50px;
+    width: 100%;
+    padding: var(--layout-y-spacing) 0px;
+    background: linear-gradient(90deg, #267DFF, #7000FF);
+    position: relative;
+    overflow: hidden;
+    margin-bottom: 50px;
+}
+
+.tokens .radial-gradient-1 {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    -webkit-transform: translate(-50%, -50%);
+    -moz-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    -o-transform: translate(-50%, -50%);
+    width: 100%;
+    z-index: 1;
+}
+
+.tokens .container {
+    position: relative;
+    z-index: 2;
+}
+
+.tokens .container .slides .slide {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 20px;
+}
+
+.tokens .container .slides .slide .token {
+    width: 100%;
+    padding: 30px;
+    background: linear-gradient(150deg, rgba(255, 255, 255, 0.3), rgba(238, 237, 237, 0.3), rgba(255, 255, 255, 0.05));
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    margin-right: 10px;
+    border-radius: 25px;
+    -webkit-border-radius: 25px;
+    -moz-border-radius: 25px;
+    -ms-border-radius: 25px;
+    -o-border-radius: 25px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.tokens .container .slides .slide .token:last-child {
+    margin-right: 0px;
+}
+
+.tokens .container .slides .slide .token .token-top {
+    display: flex;
+    align-items: center;
+    margin-bottom: 30px;
+}
+
+.tokens .container .slides .slide .token .token-top .divider {
+    display: block;
+    width: 1px;
+    height: 12px;
+    background: #020E14;
+    margin: 0px 10px;
+    opacity: 0.3;
+}
+
+.tokens .container .slides .slide .token h3 {
+    font-size: 21px;
+    font-family: 'Primary Light';
+    margin-bottom: 30px;
+}
+
+.tokens .container .slides .slide .token .token-bottom {
+    display: flex;
+    align-items: center;
+}
+
+.tokens .container .slides .slide .token .token-bottom svg {
+    margin-right: 10px;
+}
+
+.tokens .container .slides .owl-dots {
+    margin-top: 15px;
+    height: fit-content;
+}
+
+.tokens .container .slides .owl-dots button {
+    width: 5px;
+    height: 5px;
+    margin-right: 10px;
+    border-radius: 50%;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    -ms-border-radius: 50%;
+    -o-border-radius: 50%;
+}
+
+.tokens .container .slides .owl-dots button:last-child {
+    margin-right: 0px;
+}
+
+.tokens .container .slides .owl-dots button span {
+    width: 5px;
+    height: 5px;
+    background: rgba(255, 255, 255, 0.3);
+    margin: 0px;
+    border-radius: 50%;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    -ms-border-radius: 50%;
+    -o-border-radius: 50%;
+    transition: var(--transition);
+    -webkit-transition: var(--transition);
+    -moz-transition: var(--transition);
+    -ms-transition: var(--transition);
+    -o-transition: var(--transition);
+}
+
+.tokens .container .slides .owl-dots button.active span {
+    background: rgba(255, 255, 255, 1);
+}
+
+/* Transactions Section */
+.transactions {
+    padding: 50px 0px 100px 0px;
+}
+
+.transactions .container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.transactions .container h3 {
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.transactions .container .transactions-wrapper {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 80px;
+}
+
+.transactions .container .transactions-wrapper .transaction {
+    width: 100%;
+    padding: 30px 0px;
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 2px solid #F5FAFF;
+}
+
+.transactions .container .transactions-wrapper .transaction:first-child {
+    padding-top: 0px;
+}
+
+.transactions .container .transactions-wrapper .transaction:last-child {
+    padding-bottom: 0px;
+    border-bottom: none;
+}
+
+.transactions .container .transactions-wrapper .transaction .transaction-left .transaction-left-top {
+    display: flex;
+    margin-bottom: 10px;
+}
+
+.transactions .container .transactions-wrapper .transaction .transaction-left .transaction-left-top p {
+    display: flex;
+    align-items: center;
+}
+
+.transactions .container .transactions-wrapper .transaction .transaction-left .transaction-left-top p:nth-child(1) {
+    margin-right: 10px;
+}
+
+.transactions .container .transactions-wrapper .transaction .transaction-left .transaction-left-top p svg {
+    margin-right: 5px;
+}
+
+.transactions .container .transactions-wrapper .transaction .transaction-left .transaction-left-bottom {
+    display: flex;
+    align-items: center;
+}
+
+.transactions .container .transactions-wrapper .transaction .transaction-left .transaction-left-bottom img {
+    width: 24px;
+    height: 24px;
+    object-fit: cover;
+    border-radius: 50%;
+    margin-right: 5px;
+}
+
+.transactions .container .transactions-wrapper .transaction .transaction-left .transaction-left-bottom h4 {
+    font-size: 17px;
+}
+
+.transactions .container .transactions-wrapper .transaction .transaction-right {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+
+.transactions .container .transactions-wrapper .transaction .transaction-right .status {
+    padding: 2px 10px;
+    background: #008F28;
+    border-radius: 7px;
+    color: #fff;
+    display: block;
+    margin-bottom: 10px;
+}
+
+.transactions .container .transactions-wrapper .transaction .transaction-right h4 span {
+    margin-left: 5px;
+}
+
+.transactions .container .show-more-btn {
+    margin-top: 70px;
+    width: 380px;
+    height: 50px;
+    border: 1px solid var(--solid-blue-primary-color);
+    border-radius: 14px;
+    font-family: 'Primary Medium';
+    font-size: 16px;
+    color: var(--solid-blue-primary-color);
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.transactions .container .show-more-btn:hover {
+    opacity: 0.6;
+}

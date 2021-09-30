@@ -1,0 +1,237 @@
+<?php
+namespace App\Controller\Supporter;
+
+use App\Controller\Supporter\AppController;
+use Cake\Routing\Router;
+use Cake\Event\Event;
+use Cake\Log\Log;
+use Cake\I18n\I18n;
+
+/**
+ * Members Controller
+ *
+ * @property \App\Model\Table\MembersTable $Members
+ *
+ * @method \App\Model\Entity\Members[]|\Cake\Datasource\ResultSetInterface paginate($object = null, array $settings = [])
+ */
+class MembersController extends AppController
+{
+
+    /**
+     * beforeFilter
+     *
+     * @param Event $event
+     * @access public
+     * @return void
+     */
+    public function beforeFilter(Event $event)
+    {
+        parent::beforeFilter($event);
+        $this->Auth->allow(['login', 'logout', 'newpassword', 'setpassword']);
+    }
+
+    /**
+     * login逕ｻ髱｢繧定｡ｨ遉ｺ/login蜃ｦ逅�繧貞ｮ滓命縺励∪縺�
+     *
+     * @access public
+     * @return Auth->redirectUrl()
+     */
+    public function login()
+    {
+        $user = $this->Session->read('Auth.Supporter');
+        if($user){
+            return $this->redirect($this->Auth->redirectUrl());
+        }
+
+        if ($this->request->is('post')) {
+            exit;
+            var_dump();
+            // TODO 荳肴ｭ｣繧｢繧ｯ繧ｻ繧ｹ蟇ｾ遲�
+            $user = $this->Auth->identify();
+            if ($user) {
+                Log::info('login success! [id='.$user['id'].'][name='.$user['name'].']');
+                $this->Auth->setUser($user);
+                return $this->redirect($this->Auth->redirectUrl());
+            }
+            $this->Flash->error(__('Invalid username or password, try again'));
+        }
+        $user = $this->Members->newEntity();
+        $this->set('user' , $user);
+        $this->viewBuilder()->setLayout('login_admin');
+    }
+
+    /**
+     * 繝ｭ繧ｰ繧｢繧ｦ繝亥�ｦ逅�
+     *
+     * @access public
+     * @return redirect(Auth->logout())
+     */
+    public function logout()
+    {
+        $this->Session->destroy();
+        return $this->redirect($this->Auth->logout());
+    }
+
+    /**
+     * 繝代せ繝ｯ繝ｼ繝峨ｒ蠢倥ｌ縺滓婿蜷代￠縺ｫ縲√ヱ繧ｹ繝ｯ繝ｼ繝峨ｒ蜀咲匱陦梧焔邯壹″繧定｡後↑縺�縺ｾ縺吶��
+     * Step1. 繝｡繝ｼ繝ｫ繧｢繝峨Ξ繧ｹ蜈･蜉�
+     * Step2. 蜀崎ｨｭ螳夂畑縺ｮ騾夂衍繝｡繝ｼ繝ｫ繧偵け繝ｪ繝�繧ｯ
+     * Step3. 蜀崎ｨｭ螳夂判髱｢縺ｧ繝代せ繝ｯ繝ｼ繝峨ｒ蜈･蜉�
+     *
+     * @access public
+     * @return void
+     */
+    public function newpassword()
+    {
+        if ($this->request->is(['patch', 'post', 'put'])) {
+            $data = $this->request->getData();
+            $email =$data['email'];
+
+            $user = $this->Members->findByEmail($email)->first();
+            if (!is_object($user)){
+                $this->Flash->error(__('Your {0} could not be found.', __('Email')));
+                return $this->redirect(['action' => 'newpassword']);
+            }
+
+            try {
+                $this->loadModel('MailActivates');
+                $mailActivates = $this->MailActivates->setActivatecode($email);
+
+                if($mailActivates == false){
+                    throw new \Exception(__('The {0} could not be saved.', __('User')));
+                }
+
+                $this->sendRequest($user, $mailActivates);
+                $this->Flash->success(__('your newpassword is requested. you will soon get a email. please wait!'));
+                return $this->redirect(['action' => 'login']);
+
+            }catch(\Exception $e){
+                Log::error($e->getMessage());
+                $this->Flash->error(__('Your {0} could not be found.', __('Email')));
+            }
+        }
+
+        $user = $this->Members->newEntity();
+        $this->set('user' , $user);
+        $this->viewBuilder()->setLayout('login_admin');
+    }
+
+    /**
+     * 繝代せ繝ｯ繝ｼ繝牙�崎ｨｭ螳壹�ｮ騾夂衍繝｡繝ｼ繝ｫ騾∽ｿ｡蜃ｦ逅�
+     *
+     */
+    private function sendRequest($user, $mailActivates)
+    {
+        $lang = $user['language'];
+        $locale = $this->_getLocale($lang);
+        I18n::setLocale($locale);
+
+        $Email = new \Cake\Mailer\Email();
+        $Email
+            ->setFrom(EMAIL_FROM_ADDRESS)
+            ->setCharset('ISO-2022-JP') // 逶ｸ謇句�ｴ縺ｮ繝｡繝ｼ繝ｩ縺ｧ譁�蟄怜喧縺代☆繧九�ｮ繧貞屓驕ｿ縺吶ｋ縺溘ａ
+            ->setViewVars(['mailActivates' => $mailActivates, 'user' => $user])
+            ->setTo($user->email)
+            ->setSubject(__('Retrieve Password'));
+        $Email->viewBuilder()->setTemplate('request_member_password');
+        $Email->getTransport()->setConfig(['additionalParameters' => '-f ' . EMAIL_FROM_ADDRESS]);
+
+        try{
+            $Email->send();
+        }catch(\Exception $e){
+            Log::error($e->getMessage());
+        }
+    }
+
+    /**
+     * Setpassword method
+     *
+     * @param string|null $activatecode
+     * @return \Cake\Http\Response|null Redirects on successful edit, renders view otherwise.
+     * @throws \Cake\Network\Exception\NotFoundException When record not found.
+     */
+    public function setpassword($activatecode = null)
+    {
+        $this->loadModel('MailActivates');
+
+        $mailActivate = $this->MailActivates->getEmailByActivatecode($activatecode);
+        if($mailActivate == false){
+            $this->Flash->error(__('Activatecode is invalid'));
+            return $this->redirect(['action' => 'login']);
+        }
+
+        // TODO 繝上Φ繝峨Μ繝ｳ繧ｰ縺ｮ讀懆ｨ�
+        // 24譎る俣莉･蜀�縺ｫ蛻ｩ逕ｨ閠�縺ｮ繝｡繝ｼ繝ｫ繧｢繝峨Ξ繧ｹ縺悟､画峩縺輔ｌ縺溷�ｴ蜷医�∵圻螳夂噪縺�縺御ｾ句､悶ｒ逋ｺ逕溘＆縺帙※縺�繧�
+        $user = $this->Members->findByEmail($mailActivate->email)->firstOrFail();
+
+        if ($this->request->is(['patch', 'post', 'put'])) {
+            $data = $this->request->getData();
+            $user = $this->Members->patchEntity($user, $data, ['validate' => 'password']);
+
+            if ($this->Members->save($user)){
+                // 繝代せ繝ｯ繝ｼ繝牙､画峩貂医∩縺ｮ繝ｬ繧ｳ繝ｼ繝峨�ｯ蜑企勁縺吶ｋ
+                $this->MailActivates->delete($mailActivate);
+
+                $this->Flash->success(__('your password is reset.'));
+                return $this->redirect(['action' => 'login']);
+            }
+            $this->Flash->error(__('The {0} could not be saved. Please, try again.',__('Password')));
+        }
+
+        $this->set(compact('user'));
+        $this->viewBuilder()->setLayout('login_admin');
+    }
+
+    /**
+     * Edit method
+     *
+     * @param string|null $id Member id.
+     * @return \Cake\Http\Response|null Redirects on successful edit, renders view otherwise.
+     * @throws \Cake\Datasource\Exception\RecordNotFoundException When record not found.
+     */
+    public function edit($id = null)
+    {
+        $member = $this->Members->get($id);
+        if ($this->request->is(['patch', 'post', 'put'])) {
+            $data = $this->_prepareEdit($this->request->getData());
+            $member = $this->Members->patchEntity($member, $data);
+            if ($this->Members->save($member)) {
+                $this->updateSessionAuthUser();
+                $this->Flash->success(__('The {0} has been saved.', __('User')));
+                return $this->redirect(['controller' => 'dashboards', 'action' => 'index']);
+            }
+            $this->Flash->error(__('The {0} could not be saved. Please, try again.', __('User') ));
+        }
+
+        $header = [
+            'title' => __('User'),
+            'description' => '',
+            'breadcrumbs' => [
+                'Home' => Router::url(['controller' => 'Dashboards'], true),
+                __('Edit {0}', __('User')) => '',
+            ]
+        ];
+
+        $this->set(compact('member', 'header'));
+    }
+
+    private function _prepareEdit($data)
+    {
+        if (empty($data['password'])) {
+            unset($data['password']);
+        }
+
+        return $data;
+    }
+
+    private function updateSessionAuthUser()
+    {
+        $data = $this->Members->get($this->Session->read('Auth.Supporter.id'), [
+//            'contain' => ['Branches']
+        ])->toArray();
+        unset($data['password']);
+        $data['id'] = $this->Session->read('Auth.Supporter.id');
+        $this->Session->write('Auth.Supporter',$data);
+        return true;
+    }
+}

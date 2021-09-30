@@ -1,0 +1,191 @@
+footer {
+    width: 100%;
+    background: #F7F9FC;
+    position: relative;
+}
+
+footer .footer-top {
+    padding: 50px 0px;
+    position: relative;
+    z-index: 2;
+}
+
+footer .footer-top .container {
+    display: flex;
+    justify-content: space-between;
+}
+
+footer .footer-top .container .footer-left .footer-left-top {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+footer .footer-top .container .footer-left .footer-left-top .logo {
+    display: block;
+    width: 100px;
+    margin-right: 30px;
+}
+
+footer .footer-top .container .footer-left .footer-left-top .logo img {
+    width: 100%;
+}
+
+footer .footer-top .container .footer-left .footer-left-top .links {
+    display: flex;
+}
+
+footer .footer-top .container .footer-left .footer-left-top .links a {
+    margin-right: 30px;
+    transition: var(--transition);
+    -webkit-transition: var(--transition);
+    -moz-transition: var(--transition);
+    -ms-transition: var(--transition);
+    -o-transition: var(--transition);
+}
+
+footer .footer-top .container .footer-left .footer-left-top .links a:last-child {
+    margin-right: 0px;
+}
+
+footer .footer-top .container .footer-left .footer-left-top .links a:hover {
+    color: var(--solid-blue-primary-color);
+}
+
+footer .footer-top .container .footer-left p {
+    color: var(--text-color);
+    display: flex;
+    align-items: center;
+}
+
+footer .footer-top .container .footer-left p span {
+    display: block;
+    margin: 0px 20px;
+    color: #C5C0DB;
+    opacity: 0.3;
+}
+
+footer .footer-top .container .footer-right .footer-right-top {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+footer .footer-top .container .footer-right .footer-right-top .email {
+    display: flex;
+    align-items: center;
+    margin-right: 30px;
+}
+
+footer .footer-top .container .footer-right .footer-right-top .email svg {
+    margin-right: 10px;
+}
+
+footer .footer-top .container .footer-right .footer-right-top .email p {
+    font-family: 'Primary Medium';
+    color: var(--title-text-color);
+}
+
+footer .footer-top .container .footer-right .footer-right-top .email p span {
+    font-family: 'Primary Semibold';
+    color: var(--solid-blue-primary-color);
+}
+
+footer .footer-top .container .footer-right .footer-right-top .social-links {
+    display: flex;
+    align-items: center;
+}
+
+footer .footer-top .container .footer-right .footer-right-top .social-links a {
+    display: block;
+    margin-right: 15px;
+    transition: var(--transition);
+    -webkit-transition: var(--transition);
+    -moz-transition: var(--transition);
+    -ms-transition: var(--transition);
+    -o-transition: var(--transition);
+}
+
+footer .footer-top .container .footer-right .footer-right-top .social-links a:last-child {
+    margin-right: 0px;
+}
+
+footer .footer-top .container .footer-right .footer-right-top .social-links a:hover {
+    opacity: 0.7;
+}
+
+footer .footer-top .container .footer-right .download {
+    display: flex;
+}
+
+footer .footer-top .container .footer-right .download .play-store {
+    margin-right: 20px;
+}
+
+footer .footer-top .container .footer-right .download a {
+    display: block;
+    transition: var(--transition);
+    -webkit-transition: var(--transition);
+    -moz-transition: var(--transition);
+    -ms-transition: var(--transition);
+    -o-transition: var(--transition);
+}
+
+footer .footer-top .container .footer-right .download a:hover {
+    transform: scale(0.95);
+    -webkit-transform: scale(0.95);
+    -moz-transform: scale(0.95);
+    -ms-transform: scale(0.95);
+    -o-transform: scale(0.95);
+}
+
+footer .footer-bottom {
+    padding: 20px 0px;
+    border-top: 1px solid #C6C6C6;
+    display: flex;
+    justify-content: center;
+}
+
+footer .footer-bottom p {
+    text-align: center;
+    display: flex;
+    align-items: center;
+    color: var(--text-color);
+}
+
+footer .footer-bottom p .company {
+    font-family: 'Primary Medium';
+    color: var(--title-text-color);
+}
+
+footer .footer-bottom p .divider {
+    display: block;
+    margin: 0px 20px;
+    color: #C5C0DB;
+    opacity: 0.3;
+}
+
+footer .footer-bg {
+    position: absolute;
+    bottom: 0px;
+    left: 0px;
+    width: 100%;
+    z-index: 1;
+}
+
+/* Responsive */
+@media only screen and (max-width: 1100px) {
+    footer .footer-top .container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    footer .footer-top .container .footer-left {
+        margin-bottom: 50px;
+    }
+
+    footer .footer-top .container .footer-left p {
+        width: fit-content;
+        margin: auto;
+    }
+}

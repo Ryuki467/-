@@ -1,0 +1,95 @@
+/* All Partial Files */
+@import "../partials/_variables.css";
+@import "../partials/_global-styles.css";
+
+/* All Component Files */
+@import "../components/_navbar.css";
+@import "../components/_footer.css";
+
+/* Notifications Section */
+.notifications {
+    padding: 50px 0px;
+    min-height: 80vh;
+}
+
+.notifications .container h2 {
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.notifications .container .section-top {
+    margin-bottom: 50px;
+}
+
+.notifications .container .section-top a {
+    color: var(--solid-blue-primary-color);
+    transition: var(--transition);
+    -webkit-transition: var(--transition);
+    -moz-transition: var(--transition);
+    -ms-transition: var(--transition);
+    -o-transition: var(--transition);
+}
+
+.notifications .container .section-top a:hover {
+    opacity: 0.7;
+}
+
+.notifications .container .section-top a svg {
+    margin-right: 5px;
+}
+
+.notifications .container .notifications-wrapper .notification {
+    margin-bottom: 10px;
+}
+
+.notifications .container .notifications-wrapper .notification:last-child {
+    margin-bottom: 0px;
+}
+
+.notifications .container .notifications-wrapper .notification .notification-container {
+    width: 100%;
+    padding: 30px;
+    background: #fff;
+    box-shadow: 5px 5px 30px rgba(203, 225, 250, 0.5);
+    border-radius: 15px;
+}
+
+.notifications .container .notifications-wrapper .notification .notification-container .notification-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.notifications .container .notifications-wrapper .notification .notification-container .notification-top h5 {
+    font-size: 18px;
+}
+
+.notifications .container .notifications-wrapper .notification .notification-container .notification-top button {
+    cursor: pointer;
+}
+
+.notifications .container .notifications-wrapper .notification .notification-container .notification-msg {
+    font-size: 16px;
+    color: var(--text-color);
+    margin-bottom: 10px;
+}
+
+.notifications .container .notifications-wrapper .notification .notification-container .notification-bottom {
+    display: flex;
+    align-items: center;
+}
+
+.notifications .container .notifications-wrapper .notification .notification-container .notification-bottom p {
+    display: flex;
+    align-items: center;
+}
+
+.notifications .container .notifications-wrapper .notification .notification-bottom p svg {
+    margin-right: 5px;
+}
+
+.notifications .container .notifications-wrapper .notification .notification-bottom .divider {
+    margin: 0px 5px !important;
+    color: #D8E4FA;
+}

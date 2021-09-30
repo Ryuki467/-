@@ -1,0 +1,97 @@
+<?php
+namespace App\Controller\Supporter;
+
+use App\Controller\Supporter\AppController;
+use Cake\Routing\Router;
+use Cake\Datasource\ConnectionManager;
+use Cake\ORM\TableRegistry;
+
+/**
+ * Lectures Controller
+ *
+ * @property \App\Model\Table\LecturesTable $Lectures
+ *
+ * @method \App\Model\Entity\Lecture[]|\Cake\Datasource\ResultSetInterface paginate($object = null, array $settings = [])
+ */
+class LecturesController extends AppController
+{
+    public $helpers = [
+        'Paginator' => ['templates' => 'paginator-templates']
+    ];
+    
+    public $components = ['Upload', 'Paginator'];
+    /**
+     * Index method
+     *
+     * @return \Cake\Http\Response|null
+     */
+    public function index()
+    {
+        $user = $this->Session->read('Auth.Supporter');
+        
+        $data = $this->request->getQuery();
+        
+        $this->LecturesHistories = TableRegistry::get('lectures_histories');
+        $subquery = $this->LecturesHistories->find('all')
+            ->select(['member_id','lecture_id','status'])
+            ->where(['member_id' => $user["id"]]);
+        $list = $this->Lectures->findLecturesStatus($data)
+        ->select(['id','title','message','movie_url'])
+        ->join([
+            'table' => $subquery,
+            'alias' => 'lh',
+            'type'  => 'LEFT',
+            'conditions' => 'lh.lectures_histories__lecture_id = lectures.id',
+        ])
+        ->where(['display_flg' => '1']);
+        
+        $options = [
+            'limit' => 10,
+            'order' => ['id' => 'ASC'],
+        ];
+        
+        $lectures = $this->paginate($list, $options);
+        var_dump($lectures);
+        
+        /*
+        $count = 1;
+        $first_flg = true;
+        
+        foreach($lectures as $lecture){
+            if($lecture->lectures_histories["status"] == 2){
+                $count++;
+            }else{
+                $first_flg = false;
+                continue;
+            }
+        }
+        
+        if($count > 10){
+            $options = [
+                'limit' => 10,
+                'order' => ['id' => 'ASC'],
+            ];
+        }else if($count <= 10 && $count > 0){
+            $options = [
+                'limit' => LIMIT_PER_PAGE,
+                'order' => ['id' => 'ASC'],
+            ];
+        }
+        
+        $lectures = $this->paginate($list, $options);
+        */
+        
+        $header = [
+            'title' => __('Lecture'),
+            'description' => '',
+            'breadcrumbs' => [
+                'Home' => Router::url(['controller' => 'Dashboards'], true),
+                __('List {0}', __('Lecture')) => ''
+            ]
+        ];
+        
+        $next_flg = true;
+        $this->set($data);
+        $this->set(compact('lectures','user','header','next_flg'));
+    }
+}

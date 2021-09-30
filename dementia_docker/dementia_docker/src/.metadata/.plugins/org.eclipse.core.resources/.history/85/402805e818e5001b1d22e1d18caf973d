@@ -1,0 +1,141 @@
+<?php
+/**
+ * @var \App\View\AppView $this
+ * @var \App\Model\Entity\Lecture[]|\Cake\Collection\CollectionInterface $lectures
+ */
+$breadcrumbs = array_keys($header['breadcrumbs']);
+$this->extend('/Common/Suppoter/table');
+$this->assign('box_title', end($breadcrumbs));
+?>
+<div class="box-body table-responsive no-padding">
+	<?= $this->Form->create(null,[
+            'class' => 'form-serch',
+            'url'   => ['action'=>'index'],
+            'type'  => 'get',
+        ])
+    ?>
+	<div class="col-md-12">
+		<div class="col-md-12">
+			<ul class="nav nav-pills inline search_area">
+				<li>
+					<label class="control-label"><?=__('{0} Name', __('Lecture')) ?></label>
+	                <div class="form-inline">
+	                    <?= $this->Form->control('title', [
+	                        'label' => false,
+	                        'value' => $title ?? '',
+	                        'autocomplete' => 'off',
+	                    ]); ?>
+	                </div>
+				</li>
+				<li>
+					<label class="control-label">受講</label>
+					<div class="form-inline">
+						<div class="form-group select">
+							<select class="form-control" id="status" name="status">
+								<option value="0" selected="selected">未受講</option>
+								<option value="1">実施中</option>
+								<option value="2">完了</option>
+							</select>
+						</div>
+					</div>
+				</li>
+			<ul class="inline mr-auto">
+			</ul>
+				<li class="text-right">
+					<?= $this->Form->control('multipleSearch', [
+                        'type' => 'hidden',
+                        'value' => 1,
+                    ]) ?>
+                    <?= $this->Form->button( $this->Html->icon('search').__('Search'), [
+                        'class' => 'btn btn-sm btn-primary search'
+                    ]) ?>
+				</li>
+				<li class="text-right">
+					<?= $this->Html->link( $this->Html->icon('refresh').__('Clear'),['action'=>'index'],[
+                        'class'=>'btn btn-sm btn-primary',
+                        'escape'=>false,
+                    ]) ?>
+				</li>
+			</ul>
+		</div>
+	</div>
+	<?= $this->Form->end() ?>
+
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th scope="col">
+                	<?= __('id') ?>
+                </th>
+                <th scope="col">
+                	<?= __('Lecture') ?>
+                </th>
+                <th scope="col">
+                	<?= __('Explain') ?>
+                </th>
+                <th scope="col">
+                	<?= __('Lecture Movie') ?>
+                </th>
+                <th scope="col">
+                	受講
+                </th>
+                <th scope="col">
+                	<?= __('Actions') ?>
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+        	<?php foreach ($lectures as $lecture): ?>
+        		<?php var_dump($lecture["lh"]); ?>
+        		<?php if($lecture["lh"]["lectures_histories__status"] == 2){ ?>
+	            <tr>
+	                <td>
+	                	<br><?= $this->Number->format($lecture->id) ?>
+	                </td>
+	                <td>
+	                	<br><?= h($lecture->title) ?>
+	                </td>
+	                <td>
+	                	<br><?= h($lecture->message) ?>
+	                </td>
+	                <td>
+	                	<br><div style="width: 300px"><?= $lecture->movie_url ?></div>
+	                </td>
+	                <td>
+	                	<br>受講済み
+	                </td>
+	                <td>
+	                	
+	                </td>
+	            </tr>
+	            <?php }else if($next_flg){ ?>
+		            <tr>
+		                <td>
+		                	<br><?= $this->Number->format($lecture->id) ?>
+		                </td>
+		                <td>
+		                	<br><?= h($lecture->title) ?>
+		                </td>
+		                <td>
+		                	<br><?= h($lecture->message) ?>
+		                </td>
+		                <td>
+		                	<br><div style="width: 300px"><?= $lecture->movie_url ?></div>
+		                </td>
+		                <td>
+		                	<?php if($lecture->lh["lectures_histories__status"] == 1){ ?>
+			                	<br>実施中
+		                	<?php }else if($lecture->lh["lectures_histories__status"] == 0){ ?>
+			                	<br>未受講
+		                	<?php } ?>
+		                </td>
+		                <td>
+	                		<br><button>受講</button><br>
+	                	</td>
+		            </tr>
+	            	<?= $next_flg=false; ?>
+	            <?php } ?>
+            <?php endforeach; ?>
+        </tbody>
+    </table>
+</div>

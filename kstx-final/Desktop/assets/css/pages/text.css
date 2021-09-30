@@ -1,0 +1,50 @@
+/* All Partial Files */
+@import "../partials/_variables.css";
+@import "../partials/_global-styles.css";
+
+/* All Component Files */
+@import "../components/_navbar.css";
+@import "../components/_footer.css";
+
+/* Text Section */
+.text {
+    padding: 50px 0px;
+    min-height: 80vh;
+}
+
+.text .container h2 {
+    text-align: center;
+}
+
+.text .container .section-top {
+    margin-bottom: 50px;
+}
+
+.text .container .section-top a {
+    color: var(--solid-blue-primary-color);
+    transition: var(--transition);
+    -webkit-transition: var(--transition);
+    -moz-transition: var(--transition);
+    -ms-transition: var(--transition);
+    -o-transition: var(--transition);
+}
+
+.text .container .section-top a:hover {
+    opacity: 0.7;
+}
+
+.text .container .section-top a svg {
+    margin-right: 5px;
+}
+
+.text .container .part {
+    margin-top: 50px;
+}
+
+.text .container .part h4 {
+    margin-bottom: 20px;
+}
+
+.text .container .part p {
+    color: var(--text-color);
+}

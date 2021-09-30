@@ -1,0 +1,189 @@
+nav {
+    width: 100%;
+    height: 100px;
+}
+
+nav .container {
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+nav .container .nav-left {
+    display: flex;
+    align-items: center;
+}
+
+nav .container .nav-left .logo {
+    display: block;
+    width: 100px;
+    margin-right: 40px;
+}
+
+nav .container .nav-left .logo img {
+    width: 100%;
+}
+
+nav .container .nav-left ul {
+    display: flex;
+    align-items: center;
+}
+
+nav .container .nav-left ul li {
+    margin-right: 30px;
+}
+
+nav .container .nav-left ul li:last-child {
+    margin-right: 0px;
+}
+
+nav .container .nav-left ul li a {
+    display: flex;
+    align-items: center;
+    transition: var(--transition);
+    -webkit-transition: var(--transition);
+    -moz-transition: var(--transition);
+    -ms-transition: var(--transition);
+    -o-transition: var(--transition);
+    cursor: pointer;
+}
+
+nav .container .nav-left ul li a:hover {
+    color: var(--solid-blue-primary-color);
+}
+
+nav .container .nav-left ul li a svg {
+    margin-left: 5px;
+}
+
+/* Dropdown Menu */
+nav .container .nav-left ul li.dropdown-item {
+    position: relative;
+}
+
+nav .container .nav-left ul li.dropdown-item:hover .dropdown-menu {
+    display: block;
+}
+
+nav .container .nav-left ul li.dropdown-item .dropdown-menu {
+    position: absolute;
+    z-index: 100;
+    padding-top: 20px;
+    display: none;
+}
+
+nav .container .nav-left ul li.dropdown-item .dropdown-menu .dropdown-menu-content {
+    width: fit-content;
+    width: 300px;
+    background: linear-gradient(150deg, rgba(255, 255, 255, 1), rgba(238, 237, 237, 0.7), rgba(238, 237, 237, 1));
+    backdrop-filter: blur(25px);
+    -webkit-backdrop-filter: blur(25px);
+    border-radius: 10px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    -ms-border-radius: 10px;
+    -o-border-radius: 10px;
+    position: relative;
+}
+
+nav .container .nav-left ul li.dropdown-item .dropdown-menu .dropdown-menu-content::before {
+    content: '';
+    position: absolute;
+    top: -7.5px;
+    left: 10px;
+    width: 15px;
+    height: 15px;
+    background: var(--solid-blue-primary-color);
+    border-radius: 50%;
+    -webkit-border-radius: 50%;
+}
+
+nav .container .nav-left ul li.dropdown-item .dropdown-menu .dropdown-menu-content a {
+    display: block;
+    width: 100%;
+    padding: 10px 20px;
+}
+
+nav .container .nav-left ul li.dropdown-item .dropdown-menu .dropdown-menu-content a:first-child {
+    padding-top: 20px;
+}
+
+nav .container .nav-left ul li.dropdown-item .dropdown-menu .dropdown-menu-content a:last-child {
+    padding-bottom: 20px;
+}
+
+nav .container .nav-right {
+    display: flex;
+    align-items: center;
+}
+
+nav .container .nav-right a {
+    display: flex;
+    align-items: center;
+    color: var(--solid-blue-primary-color);
+    transition: var(--transition);
+    -webkit-transition: var(--transition);
+    -moz-transition: var(--transition);
+    -ms-transition: var(--transition);
+    -o-transition: var(--transition);
+    position: relative;
+}
+
+nav .container .nav-right a:hover {
+    transform: translateY(-5px);
+    -webkit-transform: translateY(-5px);
+    -moz-transform: translateY(-5px);
+    -ms-transform: translateY(-5px);
+    -o-transform: translateY(-5px);
+}
+
+nav .container .nav-right a img {
+    width: 30px;
+    height: 30px;
+    object-fit: cover;
+    border-radius: 50%;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    -ms-border-radius: 50%;
+    -o-border-radius: 50%;
+    margin-right: 5px;
+}
+
+nav .container .nav-right .divider {
+    width: 1px;
+    height: 25px;
+    background: #C5C0DB;
+    margin: 0px 20px;
+}
+
+nav .container .nav-right a .notification-icon {
+    position: absolute;
+    top: 0px;
+    left: 22px;
+    display: block;
+    width: 8px;
+    height: 8px;
+    background: #FF4768;
+    border-radius: 50%;
+}
+
+nav .container .nav-right a .total-cart-items {
+    position: absolute;
+    top: -10px;
+    right: -12px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 20px;
+    height: 20px;
+    background: #FF4768;
+    color: #fff;
+    font-family: 'Primary Regular';
+    font-size: 12px;
+    border-radius: 50%;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    -ms-border-radius: 50%;
+    -o-border-radius: 50%;
+}

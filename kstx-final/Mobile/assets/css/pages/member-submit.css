@@ -1,0 +1,491 @@
+/* All Partial Files */
+@import "../partials/_variables.css";
+@import "../partials/_globalStyles.css";
+
+body {
+    min-height: 100vh;
+    background: linear-gradient(var(--solid-blue-secondary-color), var(--solid-violet-primary-color));
+}
+
+/* Member Submit Section */
+.member-submit {
+    width: 100%;
+    margin-bottom: 40px;
+}
+
+.member-submit .member-submit-container {
+    padding: var(--layout-y-spacing) var(--layout-x-spacing);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.member-submit .member-submit-container .member-submit-top {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.member-submit .member-submit-container .member-submit-top .back-btn {
+    display: flex;
+    align-items: center;
+}
+
+.member-submit .member-submit-container .member-submit-top .back-btn svg {
+    margin-right: 10px;
+}
+
+.member-submit .member-submit-container .member-submit-top .back-btn p {
+    color: #fff;
+}
+
+.member-submit .member-submit-container .member-submit-steps {
+    margin-top: 40px;
+    width: 100%;
+}
+
+.member-submit .member-submit-container .member-submit-steps .member-submit-step {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    display: none;
+}
+
+.member-submit .member-submit-container .member-submit-steps .member-submit-step.active {
+    display: flex;
+}
+
+/* Member Submit Step 1 */
+.member-submit .member-submit-container .member-submit-steps .member-submit-step-1 h2 {
+    text-align: center;
+    color: #fff;
+    margin-bottom: 50px;
+}
+
+.member-submit .member-submit-container .member-submit-steps .member-submit-step-1 .form {
+    width: 100%;
+}
+
+.member-submit .member-submit-container .member-submit-steps .member-submit-step-1 .form .input-group {
+    width: 100%;
+    margin-bottom: 40px;
+}
+
+.member-submit .member-submit-container .member-submit-steps .member-submit-step-1 .form .input-group label {
+    display: block;
+    font-family: 'Primary Medium';
+    text-align: center;
+    color: #D8E4FA;
+    margin-bottom: 10px;
+}
+
+.member-submit .member-submit-container .member-submit-steps .member-submit-step-1 .form .input-group input {
+    width: 100%;
+    height: 50px;
+    padding: 0px 15px;
+    background: #fff;
+    border-radius: 15px;
+    -webkit-border-radius: 15px;
+    -moz-border-radius: 15px;
+    -ms-border-radius: 15px;
+    -o-border-radius: 15px;
+    text-align: center;
+}
+
+.member-submit .member-submit-container .member-submit-steps .member-submit-step-1 .form .input-group input::placeholder {
+    color: #888;
+}
+
+.member-submit .member-submit-container .member-submit-steps .member-submit-step-1 .form .input-group .msg {
+    text-align: center;
+    margin-top: 5px;
+    color: #f70132;
+    display: none;
+}
+
+.member-submit .member-submit-container .member-submit-steps .member-submit-step-1 .form .input-group .msg.active {
+    display: block;
+}
+
+.member-submit .member-submit-container .member-submit-steps .member-submit-step-1 .form .account-type-input-group {
+    width: 100%;
+    margin-bottom: 40px;
+}
+
+.member-submit .member-submit-container .member-submit-steps .member-submit-step-1 .form .account-type-input-group label {
+    display: block;
+    font-family: 'Primary Medium';
+    text-align: center;
+    color: #D8E4FA;
+    margin-bottom: 30px;
+}
+
+.member-submit .member-submit-container .member-submit-steps .member-submit-step-1 .form .account-type-input-group .account-types .account-type {
+    display: flex;
+    align-items: center;
+    margin-bottom: 25px;
+}
+
+.member-submit .member-submit-container .member-submit-steps .member-submit-step-1 .form .account-type-input-group .account-types .account-type:last-child {
+    margin-bottom: 0px;
+}
+
+.member-submit .member-submit-container .member-submit-steps .member-submit-step-1 .form .account-type-input-group .account-types .account-type .radio {
+    width: 24px;
+    height: 24px;
+    border: 1px solid #fff;
+    border-radius: 50%;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    -ms-border-radius: 50%;
+    -o-border-radius: 50%;
+    margin-right: 10px;
+    position: relative;
+}
+
+.member-submit .member-submit-container .member-submit-steps .member-submit-step-1 .form .account-type-input-group .account-types .account-type .radio::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    -webkit-transform: translate(-50%, -50%);
+    -moz-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    -o-transform: translate(-50%, -50%);
+    width: 10px;
+    height: 10px;
+    background: #fff;
+    border-radius: 50%;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    -ms-border-radius: 50%;
+    -o-border-radius: 50%;
+    display: none;
+}
+
+.member-submit .member-submit-container .member-submit-steps .member-submit-step-1 .form .account-type-input-group .account-types .account-type.active .radio::after {
+    display: block;
+}
+
+.member-submit .member-submit-container .member-submit-steps .member-submit-step-1 .form .account-type-input-group .account-types .account-type p {
+    color: #fff;
+}
+
+.member-submit .member-submit-container .member-submit-steps .member-submit-step-1 .form .profile-picture-input-group {
+    width: 100%;
+    margin-bottom: 40px;
+}
+
+.member-submit .member-submit-container .member-submit-steps .member-submit-step-1 .form .profile-picture-input-group label {
+    display: block;
+    font-family: 'Primary Medium';
+    text-align: center;
+    color: #D8E4FA;
+    margin-bottom: 30px;
+}
+
+.member-submit .member-submit-container .member-submit-steps .member-submit-step-1 .form .profile-picture-input-group .profile-picture-choosing-box {
+    width: 100%;
+    padding: 25px 15px;
+    background: linear-gradient(150deg, rgba(255, 255, 255, 0.5), rgba(238, 237, 237, 0.2), rgba(255, 255, 255, 0.05));
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    margin-right: 10px;
+    border-radius: 25px;
+    -webkit-border-radius: 25px;
+    -moz-border-radius: 25px;
+    -ms-border-radius: 25px;
+    -o-border-radius: 25px;
+}
+
+.member-submit .member-submit-container .member-submit-steps .member-submit-step-1 .form .profile-picture-input-group .profile-picture-choosing-box .profile-picture-choosing-item {
+    width: 100%;
+    padding: 20px;
+    border: 1px solid #fff;
+    border-radius: 15px;
+    -webkit-border-radius: 15px;
+    -moz-border-radius: 15px;
+    -ms-border-radius: 15px;
+    -o-border-radius: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.member-submit .member-submit-container .member-submit-steps .member-submit-step-1 .form .profile-picture-input-group .profile-picture-choosing-box .profile-picture-choosing-item:last-child {
+    margin-bottom: 0px;
+}
+
+.member-submit .member-submit-container .member-submit-steps .member-submit-step-1 .form .profile-picture-input-group .profile-picture-choosing-box .profile-picture-choosing-item svg {
+    margin-right: 5px;
+}
+
+.member-submit .member-submit-container .member-submit-steps .member-submit-step-1 .form .profile-picture-input-group .profile-picture-choosing-box .profile-picture-choosing-item p {
+    color: #fff;
+}
+
+/* Member Submit Step 2 */
+.member-submit .member-submit-container .member-submit-steps .member-submit-step-2 h2 {
+    text-align: center;
+    color: #fff;
+    margin-bottom: 50px;
+}
+
+.member-submit .member-submit-container .member-submit-steps .member-submit-step-2 .form {
+    width: 100%;
+}
+
+.member-submit .member-submit-container .member-submit-steps .member-submit-step-2 .form .input-group {
+    width: 100%;
+    margin-bottom: 40px;
+}
+
+.member-submit .member-submit-container .member-submit-steps .member-submit-step-2 .form .input-group label {
+    display: block;
+    font-family: 'Primary Medium';
+    text-align: center;
+    color: #D8E4FA;
+    margin-bottom: 10px;
+}
+
+.member-submit .member-submit-container .member-submit-steps .member-submit-step-2 .form .input-group input {
+    width: 100%;
+    height: 50px;
+    padding: 0px 15px;
+    background: #fff;
+    border-radius: 15px;
+    -webkit-border-radius: 15px;
+    -moz-border-radius: 15px;
+    -ms-border-radius: 15px;
+    -o-border-radius: 15px;
+    text-align: center;
+}
+
+.member-submit .member-submit-container .member-submit-steps .member-submit-step-2 .form .input-group input::placeholder {
+    color: #888;
+}
+
+.member-submit .member-submit-container .member-submit-steps .member-submit-step-2 .form .input-group .msg {
+    text-align: center;
+    margin-top: 5px;
+    color: #f70132;
+    display: none;
+}
+
+.member-submit .member-submit-container .member-submit-steps .member-submit-step-2 .form .input-group .msg.active {
+    display: block;
+}
+
+.member-submit .member-submit-container .member-submit-steps .member-submit-step-2 .form .account-type-input-group {
+    width: 100%;
+    margin-bottom: 40px;
+}
+
+.member-submit .member-submit-container .member-submit-steps .member-submit-step-2 .form .account-type-input-group label {
+    display: block;
+    font-family: 'Primary Medium';
+    text-align: center;
+    color: #D8E4FA;
+    margin-bottom: 30px;
+}
+
+.member-submit .member-submit-container .member-submit-steps .member-submit-step-2 .form .account-type-input-group .account-types .account-type {
+    display: flex;
+    align-items: center;
+    margin-bottom: 25px;
+}
+
+.member-submit .member-submit-container .member-submit-steps .member-submit-step-2 .form .account-type-input-group .account-types .account-type:last-child {
+    margin-bottom: 0px;
+}
+
+.member-submit .member-submit-container .member-submit-steps .member-submit-step-2 .form .account-type-input-group .account-types .account-type .radio {
+    width: 24px;
+    height: 24px;
+    border: 1px solid #fff;
+    border-radius: 50%;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    -ms-border-radius: 50%;
+    -o-border-radius: 50%;
+    margin-right: 10px;
+    position: relative;
+}
+
+.member-submit .member-submit-container .member-submit-steps .member-submit-step-2 .form .account-type-input-group .account-types .account-type .radio::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    -webkit-transform: translate(-50%, -50%);
+    -moz-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    -o-transform: translate(-50%, -50%);
+    width: 10px;
+    height: 10px;
+    background: #fff;
+    border-radius: 50%;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    -ms-border-radius: 50%;
+    -o-border-radius: 50%;
+    display: none;
+}
+
+.member-submit .member-submit-container .member-submit-steps .member-submit-step-2 .form .account-type-input-group .account-types .account-type.active .radio::after {
+    display: block;
+}
+
+.member-submit .member-submit-container .member-submit-steps .member-submit-step-2 .form .account-type-input-group .account-types .account-type p {
+    color: #fff;
+}
+
+.member-submit .member-submit-container .member-submit-steps .member-submit-step-2 .form .profile-picture-input-group {
+    width: 100%;
+    margin-bottom: 40px;
+}
+
+.member-submit .member-submit-container .member-submit-steps .member-submit-step-2 .form .profile-picture-input-group label {
+    display: block;
+    font-family: 'Primary Medium';
+    text-align: center;
+    color: #D8E4FA;
+    margin-bottom: 30px;
+}
+
+.member-submit .member-submit-container .member-submit-steps .member-submit-step-2 .form .profile-picture-input-group .profile-picture-box {
+    width: 100%;
+    padding: 25px 15px;
+    background: linear-gradient(150deg, rgba(255, 255, 255, 0.5), rgba(238, 237, 237, 0.2), rgba(255, 255, 255, 0.05));
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    margin-right: 10px;
+    border-radius: 25px;
+    -webkit-border-radius: 25px;
+    -moz-border-radius: 25px;
+    -ms-border-radius: 25px;
+    -o-border-radius: 25px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.member-submit .member-submit-container .member-submit-steps .member-submit-step-2 .form .profile-picture-input-group .profile-picture-box img {
+    width: 115px;
+    height: 115px;
+    object-fit: cover;
+    border-radius: 50%;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    -ms-border-radius: 50%;
+    -o-border-radius: 50%;
+    margin-bottom: 20px;
+}
+
+.member-submit .member-submit-container .member-submit-steps .member-submit-step-2 .form .profile-picture-input-group .profile-picture-box .actions {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.member-submit .member-submit-container .member-submit-steps .member-submit-step-2 .form .profile-picture-input-group .profile-picture-box .actions button {
+    display: flex;
+    align-items: center;
+}
+
+.member-submit .member-submit-container .member-submit-steps .member-submit-step-2 .form .profile-picture-input-group .profile-picture-box .actions button:nth-child(1) {
+    margin-right: 20px;
+}
+
+.member-submit .member-submit-container .member-submit-steps .member-submit-step-2 .form .profile-picture-input-group .profile-picture-box .actions button svg {
+    margin-right: 5px;
+}
+
+.member-submit .member-submit-container .member-submit-steps .member-submit-step-2 .form .profile-picture-input-group .profile-picture-box .actions button p {
+    color: #fff;
+}
+
+/* Member Submit Step 3 */
+.member-submit .member-submit-container .member-submit-steps .member-submit-step-3 img {
+    width: 180px;
+    height: 180px;
+    object-fit: cover;
+    border-radius: 50%;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    -ms-border-radius: 50%;
+    -o-border-radius: 50%;
+    margin-bottom: 20px;
+}
+
+.member-submit .member-submit-container .member-submit-steps .member-submit-step-3 h2 {
+    text-align: center;
+    color: #fff;
+    margin-bottom: 10px;
+}
+
+.member-submit .member-submit-container .member-submit-steps .member-submit-step-3  p {
+    color: #D8E4FA;
+}
+
+/* Steps Bar */
+.steps-bar {
+    width: 100%;
+    height: 80px;
+    position: fixed;
+    bottom: 0px;
+    left: 0px;
+    z-index: 1000;
+    padding: 0px 5px;
+}
+
+.steps-bar .steps-bar-container {
+    width: 100%;
+    height: 100%;
+    padding: 0px var(--layout-x-spacing);
+    background: linear-gradient(150deg, rgba(255, 255, 255, 0.5), rgba(238, 237, 237, 0.2), rgba(255, 255, 255, 0.05));
+    border-top: 1px solid rgba(255, 255, 255, 0.3);
+    border-left: 1px solid rgba(255, 255, 255, 0.3);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 10px;
+    align-items: center;
+    border-radius: 15px 15px 0px 0px;
+    -webkit-border-radius: 15px 15px 0px 0px;
+    -moz-border-radius: 15px 15px 0px 0px;
+    -ms-border-radius: 15px 15px 0px 0px;
+    -o-border-radius: 15px 15px 0px 0px;
+}
+
+.steps-bar .steps-bar-container button {
+    width: 100%;
+    height: 50px;
+    border: 1px solid #fff;
+    border-radius: 15px;
+    -webkit-border-radius: 15px;
+    -moz-border-radius: 15px;
+    -ms-border-radius: 15px;
+    -o-border-radius: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.steps-bar .steps-bar-container button p {
+    color: #fff;
+}
+
+.steps-bar .steps-bar-container .next-step-btn {
+    border-color: var(--solid-blue-primary-color);
+    background: var(--solid-blue-primary-color);
+    box-shadow: 0px 20px 50px rgba(54, 114, 233, 40%);
+}

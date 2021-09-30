@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Main Css -->
+    <link rel="stylesheet" href="./assets/css/pages/auth.css">
+
+    <title>Log In Verify | KSTX</title>
+</head>
+
+<body>
+
+    <!-- Auth Section -->
+    <section class="auth">
+        <div class="auth-container">
+            <div class="auth-top">
+                <div class="back-btn">
+                    <svg width="8" height="14" viewBox="0 0 8 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M7 13L1 7L7 1" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                    <p class="text-regular-14">Назад</p>
+                </div>
+            </div>
+
+            <img src="./assets/images/logo-white.svg" class="logo" alt="">
+
+            <h2>Войти</h2>
+
+            <form action="">
+                <div class="input-group">
+                    <label class="text-bold-14">Введите Код</label>
+                    <input type="text" placeholder="Код, который выслан на ваш email" required>
+                    <p class="msg text-regular-12">Invalid code, please try again</p> <!-- Just add active class to make it visible -->
+                </div>
+
+                <button>Войти</button>
+            </form>
+
+            <a href="" class="bottom-link">Выслать повторно</a>
+        </div>
+    </section>
+
+    <!-- Js Lib Files -->
+    <script src="./assets/libs/jquery/jquery.min.js"></script>
+
+</body>
+
+</html>

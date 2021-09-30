@@ -1,0 +1,20 @@
+:root {
+    /* Colors */
+    --solid-blue-primary-color: #002BEA;
+    --solid-blue-secondary-color: #1E3D90;
+    --solid-violet-primary-color: #8640F9;
+
+    /* Text Colors */
+    --title-text-color: #020E14;
+    --text-color: #666666;
+
+    /* Font Families */
+    --font-family: 'Primary Regular';
+
+    /* Transitions */
+    --transition: all 0.3s ease;
+
+    /* Spacing */
+    --layout-y-spacing: 30px;
+    --layout-x-spacing: 15px;
+}
